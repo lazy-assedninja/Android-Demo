@@ -1,0 +1,61 @@
+import me.lazy_assedninja.plugins.*
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion ConfigVersions.compileSdkVersion
+    buildToolsVersion ConfigVersions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion ConfigVersions.minLibrarySdkVersion
+        targetSdkVersion ConfigVersions.targetSdkVersion
+        versionCode ConfigVersions.versionCode
+        versionName ConfigVersions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation AndroidX.appCompat
+    implementation AndroidX.constraintLayout
+    implementation AndroidX.core
+    implementation Kotlin.stdlib
+
+    // Recyclerview
+    implementation AndroidX.recyclerview
+
+    // Dagger
+    implementation Google.dagger
+    kapt Google.daggerCompiler
+
+    // Unit Test
+    testImplementation Junit.junit
+    androidTestImplementation AndroidX.testJunit
+    androidTestImplementation AndroidX.testEspresso
+}

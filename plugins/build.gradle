@@ -1,0 +1,34 @@
+apply plugin: 'kotlin'
+apply plugin: 'java-gradle-plugin'
+
+buildscript {
+    ext {
+        kotlin_version = '1.3.72'
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+
+gradlePlugin {
+    plugins {
+        Plugins {
+            id = 'me.lazy_assedninja.plugins'
+            implementationClass = 'me.lazy_assedninja.plugins.Plugins'
+        }
+    }
+}

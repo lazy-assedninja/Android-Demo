@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Demo</string>
+
+    <!-- Demo List -->
+    <string name="title_saf_demo">SAF Demo</string>
+
+    <!-- Navigation -->
+    <string name="navigation_demo_fragment">DemoFragment</string>
+    <string name="navigation_saf_fragment">SAFFragment</string>
+
+    <!-- Error -->
+    <string name="error_null_type">Null Type</string>
+
+    <!-- SAF Button -->
+    <string name="bt_choose_file">Choose File</string>
+    <string name="bt_choose_folder">Choose Folder</string>
+
+    <!-- SAF Error -->
+    <string name="error_operating_error">Operating error.</string>
+    <string name="error_no_activity">No activity found to open "%1$s".</string>
+</resources>

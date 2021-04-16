@@ -1,0 +1,79 @@
+import me.lazy_assedninja.plugins.*
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion ConfigVersions.compileSdkVersion
+    buildToolsVersion ConfigVersions.buildToolsVersion
+
+    defaultConfig {
+        applicationId "me.lazy_assedninja.demo"
+        minSdkVersion ConfigVersions.minSampleSdkVersion
+        targetSdkVersion ConfigVersions.targetSdkVersion
+        versionCode ConfigVersions.versionCode
+        versionName ConfigVersions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation AndroidX.appCompat
+    implementation AndroidX.constraintLayout
+    implementation AndroidX.core
+    implementation Google.material
+    implementation Kotlin.stdlib
+
+    // Modules
+    implementation project(path: ':library')
+
+    // Lifecycle
+    implementation AndroidX.lifecycleJava8
+
+    // Navigation
+    implementation AndroidX.navigationFragmentKotlin
+    implementation AndroidX.navigationUIKotlin
+
+    // Document File
+    implementation AndroidX.documentFile
+
+    // Dagger
+    implementation Google.dagger
+    implementation Google.daggerAndroid
+    kapt Google.daggerAndroidProcessor
+    kapt Google.daggerCompiler
+
+    // Glide
+    implementation ThirdParty.glide
+    kapt ThirdParty.glideCompiler
+
+    // Unit Test
+    testImplementation Junit.junit
+    androidTestImplementation AndroidX.testJunit
+    androidTestImplementation AndroidX.testEspresso
+}

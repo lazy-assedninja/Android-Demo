@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/demo_fragment">
+
+    <fragment
+        android:id="@+id/demo_fragment"
+        android:name="me.lazy_assedninja.sample.ui.demo_list.DemoFragment"
+        android:label="@string/navigation_demo_fragment"
+        tools:layout="@layout/fragment_demo">
+
+        <action
+            android:id="@+id/toSAFFragment"
+            app:destination="@id/saf_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/saf_fragment"
+        android:name="me.lazy_assedninja.sample.ui.saf.SAFFragment"
+        android:label="@string/navigation_saf_fragment"
+        tools:layout="@layout/fragment_saf" />
+</navigation>
