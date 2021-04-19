@@ -64,9 +64,11 @@ dependencies {
 
     // Dagger
     implementation Google.dagger
-    implementation Google.daggerAndroid
-    kapt Google.daggerAndroidProcessor
     kapt Google.daggerCompiler
+
+    // Room
+    implementation AndroidX.roomKotlin
+    kapt AndroidX.roomCompiler
 
     // Glide
     implementation ThirdParty.glide
