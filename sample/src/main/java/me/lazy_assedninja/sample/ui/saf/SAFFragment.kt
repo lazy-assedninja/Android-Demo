@@ -77,38 +77,31 @@ class SAFFragment : BaseFragment() {
         super.onActivityResult(requestCode, resultCode, resultData)
         if (resultCode != Activity.RESULT_OK) return
         resultData?.data?.let { uri ->
-            when (requestCode) {
-                REQUEST_CODE_FILE_PICKER -> {
-                    context?.let {
-                        DocumentFile.fromSingleUri(it, uri)?.let { document ->
+            activity?.let { activity ->
+                when (requestCode) {
+                    REQUEST_CODE_FILE_PICKER -> {
+                        DocumentFile.fromSingleUri(activity, uri)?.let { document ->
                             openDocument(document)
                         }
                     }
-                }
-                REQUEST_CODE_FOLDER_PICKER -> {
-                    activity?.let { activity ->
-                        fragmentManager?.let {
-                            activity.contentResolver.takePersistableUriPermission(
-                                uri,
-                                Intent.FLAG_GRANT_READ_URI_PERMISSION
-                            )
-                            DirectoryBSDFragment().apply {
-                                arguments = Bundle().apply {
-                                    putString(ARG_DIRECTORY_URI, uri.toString())
-                                }
-                                show(it, TAG_DIRECTORY)
+                    REQUEST_CODE_FOLDER_PICKER -> {
+                        activity.contentResolver.takePersistableUriPermission(
+                            uri,
+                            Intent.FLAG_GRANT_READ_URI_PERMISSION
+                        )
+                        DirectoryBSDFragment().apply {
+                            arguments = Bundle().apply {
+                                putString(ARG_DIRECTORY_URI, uri.toString())
                             }
+                            show(activity.supportFragmentManager, TAG_DIRECTORY)
                         }
                     }
-                }
-                else -> {
-                    context?.let {
-                        Toast.makeText(it, R.string.error_operating_error, Toast.LENGTH_LONG).show()
-                    }
+                    else ->
+                        Toast.makeText(activity, R.string.error_operating_error, Toast.LENGTH_LONG)
+                            .show()
                 }
             }
         }
-
     }
 
     private fun openDocument(document: DocumentFile) {

@@ -23,7 +23,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
 
         <!-- Customize your theme here. -->
-
+        <item name="colorAccent">@color/white</item>
     </style>
 
     <style name="Theme.Utils.ItemDivider" parent="ThemeOverlay.AppCompat.Light">
