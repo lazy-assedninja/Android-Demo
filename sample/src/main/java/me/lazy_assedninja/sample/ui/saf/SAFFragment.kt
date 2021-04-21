@@ -89,7 +89,7 @@ class SAFFragment : BaseFragment() {
                             uri,
                             Intent.FLAG_GRANT_READ_URI_PERMISSION
                         )
-                        DirectoryBSDFragment().apply {
+                        DirectoryFragment().apply {
                             arguments = Bundle().apply {
                                 putString(ARG_DIRECTORY_URI, uri.toString())
                             }

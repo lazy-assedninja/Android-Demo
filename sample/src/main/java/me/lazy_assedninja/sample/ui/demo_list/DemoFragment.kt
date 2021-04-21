@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import me.lazy_assedninja.library.ui.BaseFragment
 import me.lazy_assedninja.library.utils.ExecutorUtils
@@ -30,7 +31,7 @@ class DemoFragment : BaseFragment() {
     private var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
 
     @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel: DemoViewModel by viewModels {
         viewModelFactory

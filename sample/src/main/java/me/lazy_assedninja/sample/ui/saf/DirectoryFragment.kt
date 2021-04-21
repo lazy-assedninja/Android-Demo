@@ -13,6 +13,7 @@ import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import me.lazy_assedninja.library.utils.ExecutorUtils
 import me.lazy_assedninja.sample.R
@@ -36,7 +37,7 @@ class DirectoryFragment : BottomSheetDialogFragment() {
     private var dataBindingComponent = FragmentDataBindingComponent(this)
 
     @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel: DirectoryViewModel by viewModels {
         viewModelFactory

@@ -3,7 +3,7 @@ package me.lazy_assedninja.sample.ui.index
 import dagger.Subcomponent
 import me.lazy_assedninja.sample.di.ActivityScope
 import me.lazy_assedninja.sample.ui.demo_list.DemoFragment
-import me.lazy_assedninja.sample.ui.saf.DirectoryBSDFragment
+import me.lazy_assedninja.sample.ui.saf.DirectoryFragment
 import me.lazy_assedninja.sample.ui.saf.SAFFragment
 
 // Scope annotation that the LoginComponent uses Classes annotated with @ActivityScope
@@ -23,5 +23,5 @@ interface MainComponent {
     fun inject(activity: MainActivity)
     fun inject(demoFragment: DemoFragment)
     fun inject(safFragment: SAFFragment)
-    fun inject(directoryFragment: DirectoryBSDFragment)
+    fun inject(directoryFragment: DirectoryFragment)
 }
