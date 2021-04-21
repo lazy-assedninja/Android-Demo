@@ -20,8 +20,6 @@ class DirectoryViewModel @Inject constructor() : ViewModel() {
     val documents: MediatorLiveData<List<DocumentFile>> = MediatorLiveData()
 
     fun loadDirectory(context: Context, uri: Uri) {
-        isLoading.set(true)
-
         val documentsTree = DocumentFile.fromTreeUri(context, uri) ?: return
         val childDocuments = documentsTree.listFiles().toMutableList()
         viewModelScope.launch {

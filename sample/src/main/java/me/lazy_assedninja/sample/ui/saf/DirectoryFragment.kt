@@ -15,7 +15,6 @@ import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import me.lazy_assedninja.library.utils.ExecutorUtils
-import me.lazy_assedninja.library.utils.LogUtils
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
 import me.lazy_assedninja.sample.databinding.FragmentDirectoryBinding
@@ -26,16 +25,13 @@ import javax.inject.Inject
 
 private const val ARG_DIRECTORY_URI = "directory_uri"
 
-class DirectoryBSDFragment : BottomSheetDialogFragment() {
+class DirectoryFragment : BottomSheetDialogFragment() {
 
     var binding by autoCleared<FragmentDirectoryBinding>()
     private var adapter by autoCleared<DirectoryListAdapter>()
 
     @Inject
     lateinit var executorUtils: ExecutorUtils
-
-    @Inject
-    lateinit var logUtils: LogUtils
 
     private var dataBindingComponent = FragmentDataBindingComponent(this)
 
@@ -80,13 +76,14 @@ class DirectoryBSDFragment : BottomSheetDialogFragment() {
         }
 
         adapter = DirectoryListAdapter(dataBindingComponent, executorUtils) {
+            viewModel.isLoading.set(true)
             viewModel.documentClicked(it)
         }
         binding.directoryList.adapter = adapter
 
         viewModel.documents.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
             viewModel.isLoading.set(false)
+            adapter.submitList(it)
         }
         viewModel.openDirectory.observe(viewLifecycleOwner) {
             context?.let { context ->
@@ -106,6 +103,7 @@ class DirectoryBSDFragment : BottomSheetDialogFragment() {
     }
 
     private fun openDocument(document: DocumentFile) {
+        viewModel.isLoading.set(false)
         try {
             val openIntent = Intent(Intent.ACTION_VIEW).apply {
                 flags = Intent.FLAG_GRANT_READ_URI_PERMISSION

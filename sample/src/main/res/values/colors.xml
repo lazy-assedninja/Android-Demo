@@ -11,6 +11,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Custom -->
+    <color name="colorPrimary">@color/white</color>
     <color name="colorAccent">@color/white</color>
 
     <!-- Icon -->
