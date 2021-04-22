@@ -17,6 +17,7 @@ class DemoRepository @Inject constructor(private val context: Context) {
     fun loadDemo(): List<Demo> {
         return listOf(
             Demo(context.getString(R.string.title_saf_demo)),
+            Demo(context.getString(R.string.title_room_demo)),
         )
     }
 }

@@ -3,10 +3,12 @@
 
     <!-- Demo List -->
     <string name="title_saf_demo">SAF Demo</string>
+    <string name="title_room_demo">Room Demo</string>
 
     <!-- Navigation -->
     <string name="navigation_demo_fragment">DemoFragment</string>
     <string name="navigation_saf_fragment">SAFFragment</string>
+    <string name="navigation_room_fragment">RoomFragment</string>
 
     <!-- Error -->
     <string name="error_null_type">Null Type</string>
@@ -18,4 +20,26 @@
     <!-- SAF Error -->
     <string name="error_operating_error">Operating error.</string>
     <string name="error_no_activity">No activity found to open "%1$s".</string>
+
+    <!-- Room Title -->
+    <string name="title_add_user">Add User</string>
+    <string name="title_update_user">Update User</string>
+
+    <!-- Room Button -->
+    <string name="bt_user_confirm">Confirm</string>
+    <string name="bt_user_cancel">Cancel</string>
+
+    <!-- Room Hint -->
+    <string name="hint_user_name">User Name</string>
+    <string name="hint_user_email">User Email</string>
+    <string name="hint_user_password">User Password</string>
+    
+    <!-- Room Dialog -->
+    <string name="dialog_delete_user">Delete User</string>
+    <string name="dialog_make_sure_to_delete_user">Make sure to delete the user?</string>
+
+    <!-- Room Error -->
+    <string name="error_user_name_can_not_be_empty">User name can\'t be empty.</string>
+    <string name="error_user_email_can_not_be_empty">User email can\'t be empty.</string>
+    <string name="error_user_password_can_not_be_empty">User password can\'t be empty.</string>
 </resources>

@@ -54,6 +54,9 @@ dependencies {
 
     // Lifecycle
     implementation AndroidX.lifecycleJava8
+    implementation AndroidX.lifecycleExtensions
+    implementation AndroidX.lifecycleLiveData
+    implementation AndroidX.lifecycleViewModel
 
     // Navigation
     implementation AndroidX.navigationFragmentKotlin

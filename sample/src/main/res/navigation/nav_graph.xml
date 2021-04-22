@@ -16,6 +16,12 @@
             app:destination="@id/saf_fragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/toRoomFragment"
+            app:destination="@id/room_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment
@@ -23,4 +29,10 @@
         android:name="me.lazy_assedninja.sample.ui.saf.SAFFragment"
         android:label="@string/navigation_saf_fragment"
         tools:layout="@layout/fragment_saf" />
+
+    <fragment
+        android:id="@+id/room_fragment"
+        android:name="me.lazy_assedninja.sample.ui.room.RoomFragment"
+        android:label="@string/navigation_room_fragment"
+        tools:layout="@layout/fragment_room" />
 </navigation>

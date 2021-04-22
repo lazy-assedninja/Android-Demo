@@ -41,7 +41,6 @@ class DemoListAdapter(
                 demoClickCallback?.invoke(it)
             }
         }
-
         return binding
     }
 

@@ -45,6 +45,7 @@ dependencies {
     implementation AndroidX.appCompat
     implementation AndroidX.constraintLayout
     implementation AndroidX.core
+    implementation Google.material
     implementation Kotlin.stdlib
 
     // Recyclerview

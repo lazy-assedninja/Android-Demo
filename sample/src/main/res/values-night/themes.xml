@@ -26,7 +26,7 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
-    <style name="Theme.Utils.ItemDivider" parent="ThemeOverlay.AppCompat.Light">
+    <style name="Theme.Utils.ItemDivider" parent="Theme.Demo">
         <item name="android:background">@color/white</item>
     </style>
 </resources>

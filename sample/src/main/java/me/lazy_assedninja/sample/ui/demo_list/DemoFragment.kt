@@ -17,7 +17,6 @@ import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
 import me.lazy_assedninja.sample.databinding.FragmentDemoBinding
 import me.lazy_assedninja.sample.ui.index.MainActivity
 import me.lazy_assedninja.sample.utils.autoCleared
-import me.lazy_assedninja.sample.view_model.ViewModelFactory
 import javax.inject.Inject
 
 class DemoFragment : BaseFragment() {
@@ -64,6 +63,11 @@ class DemoFragment : BaseFragment() {
                 getString(R.string.title_saf_demo) -> {
                     findNavController().navigate(
                         DemoFragmentDirections.toSAFFragment()
+                    )
+                }
+                getString(R.string.title_room_demo) -> {
+                    findNavController().navigate(
+                        DemoFragmentDirections.toRoomFragment()
                     )
                 }
             }

@@ -21,7 +21,6 @@ import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
 import me.lazy_assedninja.sample.databinding.FragmentDirectoryBinding
 import me.lazy_assedninja.sample.ui.index.MainActivity
 import me.lazy_assedninja.sample.utils.autoCleared
-import me.lazy_assedninja.sample.view_model.ViewModelFactory
 import javax.inject.Inject
 
 private const val ARG_DIRECTORY_URI = "directory_uri"

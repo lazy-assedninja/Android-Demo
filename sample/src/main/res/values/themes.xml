@@ -29,4 +29,10 @@
     <style name="Theme.Utils.ItemDivider" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:background">@color/black</item>
     </style>
+
+    <style name="Theme.BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
 </resources>
