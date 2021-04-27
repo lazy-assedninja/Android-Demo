@@ -22,6 +22,12 @@
             app:destination="@id/room_fragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/toDocumentsProviderFragment"
+            app:destination="@id/documents_provider_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment
@@ -35,4 +41,10 @@
         android:name="me.lazy_assedninja.sample.ui.room.RoomFragment"
         android:label="@string/navigation_room_fragment"
         tools:layout="@layout/fragment_room" />
+
+    <fragment
+        android:id="@+id/documents_provider_fragment"
+        android:name="me.lazy_assedninja.sample.ui.documents_provider.DocumentsProviderFragment"
+        android:label="@string/navigation_documents_provider_fragment"
+        tools:layout="@layout/fragment_documents_provider" />
 </navigation>

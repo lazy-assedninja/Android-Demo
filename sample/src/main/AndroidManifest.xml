@@ -25,5 +25,26 @@
             android:name=".ui.index.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize" />
+
+
+        <!--
+        Declare the document provider class MyDocumentsProvider to the system.  The MANAGE_DOCUMENTS
+        permission belongs only to the Android system, ensuring this provider will never be used
+        directly by another app.  The provider must grant URI permissions in order to expose the
+        specific documents(s) chosen, while not sharing all of its data by default.  It must be
+        exported to be visible outside the application, and it must include a filter with the intent
+        "android.content.action.DOCUMENTS_PROVIDER" in order to be shown in the system document
+        picker UI.
+        -->
+        <provider
+            android:name="me.lazy_assedninja.sample.content_provider.MyDocumentsProvider"
+            android:authorities="me.lazy_assedninja.documents"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
     </application>
 </manifest>

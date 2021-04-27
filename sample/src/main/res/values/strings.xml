@@ -4,11 +4,13 @@
     <!-- Demo List -->
     <string name="title_saf_demo">SAF Demo</string>
     <string name="title_room_demo">Room Demo</string>
+    <string name="title_documents_provider_demo">DocumentsProvider Demo</string>
 
     <!-- Navigation -->
     <string name="navigation_demo_fragment">DemoFragment</string>
     <string name="navigation_saf_fragment">SAFFragment</string>
     <string name="navigation_room_fragment">RoomFragment</string>
+    <string name="navigation_documents_provider_fragment">DocumentsProviderFragment</string>
 
     <!-- Error -->
     <string name="error_null_type">Null Type</string>
@@ -42,4 +44,23 @@
     <string name="error_user_name_can_not_be_empty">User name can\'t be empty.</string>
     <string name="error_user_email_can_not_be_empty">User email can\'t be empty.</string>
     <string name="error_user_password_can_not_be_empty">User password can\'t be empty.</string>
+
+    <!-- Documents Provider Title -->
+    <string name="title_documents_provider">Documents Provider</string>
+
+    <!-- Documents Provider Summary -->
+    <string name="summary_root">&#169;Lazy-assed Ninja</string>
+
+    <!-- Documents Provider File Array -->
+    <array name="array_img_ids">
+        <item>@raw/img_cat_1</item>
+        <item>@raw/img_cat_2</item>
+        <item>@raw/img_cat_3</item>
+        <item>@raw/img_cat_4</item>
+        <item>@raw/img_cat_5</item>
+    </array>
+
+    <array name="array_txt_ids">
+        <item>@raw/cat_names</item>、
+    </array>
 </resources>

@@ -70,6 +70,11 @@ class DemoFragment : BaseFragment() {
                         DemoFragmentDirections.toRoomFragment()
                     )
                 }
+                getString(R.string.title_documents_provider_demo) -> {
+                    findNavController().navigate(
+                        DemoFragmentDirections.toDocumentsProviderFragment()
+                    )
+                }
             }
         }
         binding.demoList.adapter = adapter
