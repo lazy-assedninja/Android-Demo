@@ -13,7 +13,6 @@ class DocumentsProviderViewModel @Inject constructor(private val storage: Storag
     }
 
     fun openDocumentsProvider(isOpened: Boolean) {
-        storage.
-        setString(DOCUMENT_PROVIDER, isOpened.toString())
+        storage.setString(DOCUMENT_PROVIDER, isOpened.toString())
     }
 }
