@@ -5,6 +5,8 @@ import me.lazy_assedninja.sample.content_provider.MyDocumentsProvider
 import me.lazy_assedninja.sample.di.ActivityScope
 import me.lazy_assedninja.sample.ui.demo_list.DemoFragment
 import me.lazy_assedninja.sample.ui.documents_provider.DocumentsProviderFragment
+import me.lazy_assedninja.sample.ui.retrofit.RetrofitDetailFragment
+import me.lazy_assedninja.sample.ui.retrofit.RetrofitFragment
 import me.lazy_assedninja.sample.ui.room.UserFragment
 import me.lazy_assedninja.sample.ui.room.RoomFragment
 import me.lazy_assedninja.sample.ui.saf.DirectoryFragment
@@ -32,4 +34,6 @@ interface MainComponent {
     fun inject(roomFragment: RoomFragment)
     fun inject(userFragment: UserFragment)
     fun inject(documentsProviderFragment: DocumentsProviderFragment)
+    fun inject(retrofitFragment: RetrofitFragment)
+    fun inject(retrofitDetailFragment: RetrofitDetailFragment)
 }

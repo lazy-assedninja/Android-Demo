@@ -19,6 +19,7 @@ class DemoRepository @Inject constructor(private val context: Context) {
             Demo(context.getString(R.string.title_saf_demo)),
             Demo(context.getString(R.string.title_room_demo)),
             Demo(context.getString(R.string.title_documents_provider_demo)),
+            Demo(context.getString(R.string.title_retrofit_demo)),
         )
     }
 }

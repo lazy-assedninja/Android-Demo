@@ -28,6 +28,12 @@
             app:destination="@id/documents_provider_fragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/toRetrofitFragment"
+            app:destination="@id/retrofit_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment
@@ -47,4 +53,28 @@
         android:name="me.lazy_assedninja.sample.ui.documents_provider.DocumentsProviderFragment"
         android:label="@string/navigation_documents_provider_fragment"
         tools:layout="@layout/fragment_documents_provider" />
+
+    <fragment
+        android:id="@+id/retrofit_fragment"
+        android:name="me.lazy_assedninja.sample.ui.retrofit.RetrofitFragment"
+        android:label="@string/navigation_retrofit_fragment"
+        tools:layout="@layout/fragment_retrofit">
+
+        <action
+            android:id="@+id/toRetrofitDetailFragment"
+            app:destination="@id/retrofit_detail_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/retrofit_detail_fragment"
+        android:name="me.lazy_assedninja.sample.ui.retrofit.RetrofitDetailFragment"
+        android:label="@string/navigation_retrofit_detail_fragment"
+        tools:layout="@layout/fragment_retrofit_detail">
+
+        <argument
+            android:name="youBike"
+            app:argType="me.lazy_assedninja.sample.vo.YouBike" />
+    </fragment>
 </navigation>

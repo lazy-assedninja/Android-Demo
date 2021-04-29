@@ -4,6 +4,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
@@ -76,6 +77,13 @@ dependencies {
     // Glide
     implementation ThirdParty.glide
     kapt ThirdParty.glideCompiler
+
+    // Gson
+    implementation Google.gson
+
+    // Retrofit
+    implementation ThirdParty.retrofit
+    implementation ThirdParty.retrofitGson
 
     // Unit Test
     testImplementation Junit.junit

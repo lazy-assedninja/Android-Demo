@@ -27,6 +27,7 @@ object DependenciesVersions {
 
     // Third Party
     val glide = "4.12.0"
+    val retrofit = "2.9.0"
 
     // Junit
     val junit = "4.13.1"
