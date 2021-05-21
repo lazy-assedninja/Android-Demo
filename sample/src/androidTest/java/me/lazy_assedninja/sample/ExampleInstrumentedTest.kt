@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("me.lazy_assedninja.sample", appContext.packageName)
+        assertEquals("me.lazy_assedninja.demo", appContext.packageName)
     }
 }
