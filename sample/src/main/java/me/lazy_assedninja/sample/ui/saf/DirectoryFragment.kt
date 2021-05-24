@@ -76,7 +76,6 @@ class DirectoryFragment : BottomSheetDialogFragment() {
         }
 
         adapter = DirectoryListAdapter(dataBindingComponent, executorUtils) {
-            viewModel.isLoading.set(true)
             viewModel.documentClicked(it)
         }
         binding.directoryList.adapter = adapter

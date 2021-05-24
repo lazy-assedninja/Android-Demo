@@ -5,7 +5,13 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'kotlin-allopen'
     id 'androidx.navigation.safeargs.kotlin'
+}
+
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'me.lazy_assedninja.library.testing.OpenClass'
 }
 
 android {
@@ -19,10 +25,14 @@ android {
         versionCode ConfigVersions.versionCode
         versionName ConfigVersions.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "me.lazy_assedninja.sample.utils.DemoTestRunner"
     }
 
     buildTypes {
+        debug {
+            testCoverageEnabled !project.hasProperty('android.injected.invoked.from.ide')
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -38,8 +48,18 @@ android {
         jvmTarget = '1.8'
     }
 
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
+
     buildFeatures {
         dataBinding true
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/AL2.0'
+        pickFirst 'META-INF/LGPL2.1'
     }
 }
 
@@ -58,6 +78,10 @@ dependencies {
     implementation AndroidX.lifecycleExtensions
     implementation AndroidX.lifecycleLiveData
     implementation AndroidX.lifecycleViewModel
+
+    // Coroutines
+    testImplementation Kotlin.coroutinesTest
+    androidTestImplementation Kotlin.coroutinesTest
 
     // Navigation
     implementation AndroidX.navigationFragmentKotlin
@@ -85,8 +109,29 @@ dependencies {
     implementation ThirdParty.retrofit
     implementation ThirdParty.retrofitGson
 
-    // Unit Test
+    // Arch Core
+    testImplementation AndroidX.archCoreTesting
+    androidTestImplementation AndroidX.archCoreTesting
+
+    // Junit
     testImplementation Junit.junit
     androidTestImplementation AndroidX.testJunit
+
+    // Mockito
+    testImplementation Mockito.mockitoCore
+    androidTestImplementation Mockito.mockitoCore
+    androidTestImplementation Mockito.mockitoAndroid
+
+    // MockWebServer
+    testImplementation ThirdParty.mockWebServer
+
+    // Espresso
     androidTestImplementation AndroidX.testEspresso
+}
+
+// we need all open to run tests which we enable only for debug builds.
+project.tasks.whenTaskAdded {
+    if (it.name == "testReleaseUnitTest") {
+        it.enabled = false
+    }
 }

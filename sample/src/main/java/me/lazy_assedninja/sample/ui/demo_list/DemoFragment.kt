@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import me.lazy_assedninja.library.ui.BaseFragment
@@ -57,6 +58,8 @@ class DemoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.loadDemoList()
+
         adapter = DemoListAdapter(dataBindingComponent, executorUtils) {
             when (it.name) {
                 getString(R.string.title_saf_demo) -> {
@@ -83,10 +86,13 @@ class DemoFragment : BaseFragment() {
         }
         binding.demoList.adapter = adapter
 
-        initData()
+        initDemoList(viewModel)
     }
 
-    private fun initData() {
-        adapter.submitList(viewModel.loadDemo())
+    private fun initDemoList(viewModel: DemoViewModel) {
+        viewModel.demoList.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+            viewModel.isLoading.set(false)
+        }
     }
 }

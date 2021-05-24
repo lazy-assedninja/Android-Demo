@@ -1,7 +1,7 @@
 package me.lazy_assedninja.sample.repository
 
 import android.content.Context
-import me.lazy_assedninja.library.di.OpenForTesting
+import me.lazy_assedninja.library.testing.OpenForTesting
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.vo.Demo
 import javax.inject.Inject

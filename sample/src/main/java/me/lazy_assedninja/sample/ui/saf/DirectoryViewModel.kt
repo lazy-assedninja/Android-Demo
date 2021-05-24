@@ -15,9 +15,9 @@ class DirectoryViewModel @Inject constructor() : ViewModel() {
 
     val isLoading = ObservableBoolean(false)
 
-    val openDirectory: MutableLiveData<DocumentFile> = MediatorLiveData()
-    val openDocument: MutableLiveData<DocumentFile> = MediatorLiveData()
-    val documents: MediatorLiveData<List<DocumentFile>> = MediatorLiveData()
+    val openDirectory: MutableLiveData<DocumentFile> = MutableLiveData()
+    val openDocument: MutableLiveData<DocumentFile> = MutableLiveData()
+    val documents: MutableLiveData<List<DocumentFile>> = MutableLiveData()
 
     fun loadDirectory(context: Context, uri: Uri) {
         val documentsTree = DocumentFile.fromTreeUri(context, uri) ?: return
@@ -37,6 +37,7 @@ class DirectoryViewModel @Inject constructor() : ViewModel() {
      * a directory (which the user wants to navigate into).
      */
     fun documentClicked(documentFile: DocumentFile) {
+        isLoading.set(true)
         if (documentFile.isDirectory) {
             openDirectory.postValue(documentFile)
         } else {

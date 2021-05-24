@@ -1,6 +1,6 @@
 package me.lazy_assedninja.sample.repository
 
-import me.lazy_assedninja.library.di.OpenForTesting
+import me.lazy_assedninja.library.testing.OpenForTesting
 import me.lazy_assedninja.sample.api.RetrofitService
 import me.lazy_assedninja.sample.vo.YouBike
 import retrofit2.Call

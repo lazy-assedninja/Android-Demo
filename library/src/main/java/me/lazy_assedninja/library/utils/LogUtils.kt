@@ -1,7 +1,7 @@
 package me.lazy_assedninja.library.utils
 
 import me.lazy_assedninja.library.BuildConfig
-import me.lazy_assedninja.library.di.OpenForTesting
+import me.lazy_assedninja.library.testing.OpenForTesting
 import javax.inject.Inject
 import javax.inject.Singleton
 

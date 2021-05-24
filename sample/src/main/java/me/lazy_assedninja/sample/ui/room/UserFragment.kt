@@ -77,11 +77,11 @@ class UserFragment : BaseBottomSheetDialogFragment() {
         viewModel.isLoading.set(true)
 
         if (userID != "null") {
-            viewModel.getUser(userID.toLong()).observe(viewLifecycleOwner) {
+            viewModel.userID.postValue(userID.toLong())
+            viewModel.getUser().observe(viewLifecycleOwner) {
                 binding.user = it
                 viewModel.isLoading.set(false)
             }
-            viewModel.userID.postValue(userID.toLong())
         } else {
             viewModel.isLoading.set(false)
         }

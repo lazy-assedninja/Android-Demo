@@ -16,8 +16,7 @@ import javax.inject.Inject
 class RetrofitViewModel @Inject constructor(
     private val logUtils: LogUtils,
     private val retrofitRepository: RetrofitRepository
-) :
-    ViewModel() {
+) : ViewModel() {
 
     val isLoading = ObservableBoolean(false)
 

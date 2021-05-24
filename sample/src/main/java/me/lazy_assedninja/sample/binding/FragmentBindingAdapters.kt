@@ -6,7 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestListener
-import me.lazy_assedninja.library.di.OpenForTesting
+import me.lazy_assedninja.library.testing.OpenForTesting
 import javax.inject.Inject
 
 /**

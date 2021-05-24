@@ -16,25 +16,19 @@ class RoomViewModel @Inject constructor(private val roomRepository: RoomReposito
     val userID: MutableLiveData<Long> = MutableLiveData()
 
     fun insertUsers(vararg users: User) {
-        CoroutineScope(Dispatchers.IO).launch {
-            roomRepository.insertUsers(*users)
-        }
+        roomRepository.insertUsers(*users)
     }
 
     fun updateUsers(vararg users: User) {
-        CoroutineScope(Dispatchers.IO).launch {
-            roomRepository.updateUsers(*users)
-        }
+        roomRepository.updateUsers(*users)
     }
 
     fun deleteUsers(vararg users: User) {
-        CoroutineScope(Dispatchers.IO).launch {
-            roomRepository.deleteUsers(*users)
-        }
+        roomRepository.deleteUsers(*users)
     }
 
-    fun getUser(id: Long): LiveData<User> = userID.switchMap {
-        roomRepository.getUser(id)
+    fun getUser(): LiveData<User> = userID.switchMap {
+        roomRepository.getUser(it)
     }
 
     fun loadAllUsers(): LiveData<List<User>> {

@@ -2,7 +2,7 @@ package me.lazy_assedninja.library.utils
 
 import android.os.Handler
 import android.os.Looper
-import me.lazy_assedninja.library.di.OpenForTesting
+import me.lazy_assedninja.library.testing.OpenForTesting
 import java.util.concurrent.Executors
 import javax.inject.Inject
 import javax.inject.Singleton
