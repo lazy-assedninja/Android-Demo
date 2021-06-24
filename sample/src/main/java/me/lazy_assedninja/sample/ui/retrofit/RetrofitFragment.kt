@@ -73,5 +73,11 @@ class RetrofitFragment : BaseFragment() {
 
             viewModel.isLoading.set(false)
         }
+
+        initData()
+    }
+
+    private fun initData(){
+        viewModel.loadYouBikeList()
     }
 }
