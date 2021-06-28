@@ -25,7 +25,7 @@ release/
 /captures
 
 # IntelliJ
-.idea
+.idea/
 
 # Android Studio 3 in .gitignore file.
 /.idea/caches
