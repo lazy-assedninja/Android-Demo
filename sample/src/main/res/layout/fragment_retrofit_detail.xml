@@ -7,7 +7,7 @@
 
         <variable
             name="args"
-            type="me.lazy_assedninja.sample.ui.retrofit.RetrofitDetailFragmentArgs" />
+            type="me.lazy_assedninja.sample.vo.YouBike" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

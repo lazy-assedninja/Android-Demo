@@ -28,7 +28,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
-
         <!--
         Declare the document provider class MyDocumentsProvider to the system.  The MANAGE_DOCUMENTS
         permission belongs only to the Android system, ensuring this provider will never be used

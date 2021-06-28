@@ -42,6 +42,6 @@ class RetrofitDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.args = args
+        binding.args = args.youBike
     }
 }
