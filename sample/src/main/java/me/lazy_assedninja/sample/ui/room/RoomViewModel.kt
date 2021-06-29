@@ -2,35 +2,39 @@ package me.lazy_assedninja.sample.ui.room
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.*
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import me.lazy_assedninja.sample.di.DefaultDispatcher
+import me.lazy_assedninja.sample.di.IODispatcher
 import me.lazy_assedninja.sample.repository.RoomRepository
 import me.lazy_assedninja.sample.vo.User
 import javax.inject.Inject
 
-class RoomViewModel @Inject constructor(private val roomRepository: RoomRepository) : ViewModel() {
+class RoomViewModel @Inject constructor(
+    private val roomRepository: RoomRepository,
+    @IODispatcher private val dispatcher: CoroutineDispatcher
+) : ViewModel() {
 
     val isLoading = ObservableBoolean(false)
 
     val userID: MutableLiveData<Long> = MutableLiveData()
 
     fun insertUsers(vararg users: User) {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch(dispatcher) {
             roomRepository.insertUsers(*users)
         }
-
     }
 
     fun updateUsers(vararg users: User) {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch(dispatcher) {
             roomRepository.updateUsers(*users)
         }
-
     }
 
     fun deleteUsers(vararg users: User) {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch(dispatcher) {
             roomRepository.deleteUsers(*users)
         }
     }

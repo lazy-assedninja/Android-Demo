@@ -9,7 +9,7 @@ object DependenciesVersions {
     val core = "1.3.2"
     val lifecycle = "2.3.0"
     val lifecycle_arch = "2.1.0"
-    val room = "2.2.6"
+    val room = "2.3.0"
     val documentFile = "1.0.1"
 
     val archCore = "2.1.0"

@@ -2,6 +2,7 @@ package me.lazy_assedninja.sample.ui.room
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import me.lazy_assedninja.sample.common.TestUtil
 import me.lazy_assedninja.sample.common.mock
 import me.lazy_assedninja.sample.repository.RoomRepository
@@ -27,7 +28,7 @@ class RoomViewModelTest {
     val instantExecutorRule = InstantTaskExecutorRule()
 
     private val repository = mock(RoomRepository::class.java)
-    private var viewModel = RoomViewModel(repository)
+    private var viewModel = RoomViewModel(repository, TestCoroutineDispatcher())
     private lateinit var testUser: User
 
     @Before
