@@ -38,6 +38,9 @@ class RoomViewModelTest {
             email = "henryhuang861219@gmail.com",
             password = "123456"
         )
+
+        // Insert For Test
+        viewModel.insertUsers(testUser)
     }
 
     @Test
@@ -48,9 +51,6 @@ class RoomViewModelTest {
 
     @Test
     fun insertUsers() {
-        // Insert For Test
-        viewModel.insertUsers(testUser)
-
         verify(repository).insertUsers(testUser)
     }
 
