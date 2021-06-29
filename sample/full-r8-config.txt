@@ -113,24 +113,21 @@
 
 # End of content from /Users/jing_heng/android-project/side-project/Android-Demo/sample/build/intermediates/proguard-files/proguard-android-optimize.txt-4.2.1
 # The proguard configuration file for the following section is /Users/jing_heng/android-project/side-project/Android-Demo/sample/proguard-rules.pro
+#-----------Proguard Configuration-----------
 # Specifies the number of optimization passes to be performed. ex. 0 ~ 7
 -optimizationpasses 5
 
 # Not to generate mixed-case class names while obfuscating.
-# -dontusemixedcaseclassnames
+-dontusemixedcaseclassnames
 
 # Write out some more information during processing.
-# -verbose
-
-# Print any warnings about unresolved references and other important problems,
-# but to continue processing in any case.
-# -ignorewarning
+-verbose
 
 # Not to shrink the input.
-# -dontshrink
+-dontshrink
 
 # Not to optimize the input class files.
-# -dontoptimize
+-dontoptimize
 
 # Repackage all class files that are renamed, by moving them into the single given package.
 # Without argument or with an empty string (''), the package is removed completely.
@@ -143,10 +140,15 @@
 # Not performs peephole optimizations for arithmetic instructions.
 -optimizations !code/simplification/arithmetic
 
+# Preserve the line number information for debugging stack traces.
+-keepattributes SourceFile,LineNumberTable
+
 # Preserved generics, exceptoins, annotation, InnerClass, permittedSubclasses, EnclosingMethod,
 # Deprecated for debugging stack traces.
 -keepattributes Signature,Exceptions,*Annotation*,InnerClasses,PermittedSubclasses,EnclosingMethod,Deprecated
 
+
+#-----------Android-----------
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Fragment
 -keep public class * extends android.app.Application
@@ -186,12 +188,32 @@
     @android.webkit.JavascriptInterface <methods>;
 }
 
+# Preserved data class
 -keep class me.lazy_assedninja.sample.vo.** { *; }
 
-# Preserve the line number information for debugging stack traces.
--keepattributes SourceFile,LineNumberTable
 
-# Print Information
+#-----------Gson-----------
+# Gson specific classes
+-dontwarn sun.misc.**
+#-keep class com.google.gson.stream.** { *; }
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.google.gson.examples.android.model.** { <fields>; }
+
+# Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+-keep class * extends com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+
+
+#-----------Information-----------
 # To output a full report of all the rules that R8 applies.
 -printconfiguration full-r8-config.txt
 
