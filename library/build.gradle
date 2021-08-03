@@ -67,7 +67,7 @@ dependencies {
     implementation Google.dagger
     kapt Google.daggerCompiler
 
-    // Unit Test
+    // Test
     testImplementation Junit.junit
     androidTestImplementation AndroidX.testJunit
     androidTestImplementation AndroidX.testEspresso
