@@ -18,7 +18,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import me.lazy_assedninja.library.utils.ExecutorUtils
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
-import me.lazy_assedninja.sample.databinding.FragmentDirectoryBinding
+import me.lazy_assedninja.sample.databinding.BottomSheetDialogFragmentDirectoryBinding
 import me.lazy_assedninja.sample.ui.index.MainActivity
 import me.lazy_assedninja.sample.utils.autoCleared
 import javax.inject.Inject
@@ -27,7 +27,7 @@ private const val ARG_DIRECTORY_URI = "directory_uri"
 
 class DirectoryFragment : BottomSheetDialogFragment() {
 
-    var binding by autoCleared<FragmentDirectoryBinding>()
+    var binding by autoCleared<BottomSheetDialogFragmentDirectoryBinding>()
     private var adapter by autoCleared<DirectoryListAdapter>()
 
     @Inject
@@ -58,7 +58,7 @@ class DirectoryFragment : BottomSheetDialogFragment() {
     ): View {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_directory,
+            R.layout.bottom_sheet_dialog_fragment_directory,
             container,
             false,
             dataBindingComponent

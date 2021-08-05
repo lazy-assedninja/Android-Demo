@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import me.lazy_assedninja.library.ui.BaseFragment
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.databinding.FragmentRetrofitDetailBinding
@@ -41,7 +44,14 @@ class RetrofitDetailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.args = args.youBike
+
+        initNavigationUI()
+    }
+
+    private fun initNavigationUI() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
     }
 }

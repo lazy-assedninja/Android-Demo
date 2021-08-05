@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.Uri
 import androidx.databinding.ObservableBoolean
 import androidx.documentfile.provider.DocumentFile
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

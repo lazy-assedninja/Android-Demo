@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import me.lazy_assedninja.library.ui.BaseBottomSheetDialogFragment
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
-import me.lazy_assedninja.sample.databinding.FragmentUserBinding
+import me.lazy_assedninja.sample.databinding.BottomSheetDialogFragmentUserBinding
 import me.lazy_assedninja.sample.ui.index.MainActivity
 import me.lazy_assedninja.sample.utils.autoCleared
 import me.lazy_assedninja.sample.vo.User
@@ -21,7 +21,7 @@ private const val ARG_USER_ID = "user_id"
 
 class UserFragment : BaseBottomSheetDialogFragment() {
 
-    var binding by autoCleared<FragmentUserBinding>()
+    var binding by autoCleared<BottomSheetDialogFragmentUserBinding>()
 
     private var dataBindingComponent = FragmentDataBindingComponent(this)
 
@@ -48,7 +48,7 @@ class UserFragment : BaseBottomSheetDialogFragment() {
     ): View {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_user,
+            R.layout.bottom_sheet_dialog_fragment_user,
             container,
             false,
             dataBindingComponent

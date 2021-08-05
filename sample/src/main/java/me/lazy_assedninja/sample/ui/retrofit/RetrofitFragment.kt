@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import me.lazy_assedninja.library.ui.BaseFragment
 import me.lazy_assedninja.library.utils.ExecutorUtils
 import me.lazy_assedninja.sample.R
@@ -74,10 +76,17 @@ class RetrofitFragment : BaseFragment() {
             viewModel.isLoading.set(false)
         }
 
+        initNavigationUI()
         initData()
     }
 
-    private fun initData(){
+    private fun initNavigationUI() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
+    }
+
+    private fun initData() {
         viewModel.loadYouBikeList()
     }
 }

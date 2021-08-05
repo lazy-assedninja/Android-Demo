@@ -11,6 +11,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.documentfile.provider.DocumentFile
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import me.lazy_assedninja.library.ui.BaseFragment
 import me.lazy_assedninja.sample.R
 import me.lazy_assedninja.sample.binding.FragmentDataBindingComponent
@@ -71,6 +74,13 @@ class SAFFragment : BaseFragment() {
                 Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), REQUEST_CODE_FOLDER_PICKER
             )
         }
+        initNavigationUI()
+    }
+
+    private fun initNavigationUI() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {

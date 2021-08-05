@@ -3,10 +3,7 @@ package me.lazy_assedninja.sample.ui.room
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.*
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import me.lazy_assedninja.sample.di.DefaultDispatcher
 import me.lazy_assedninja.sample.di.IODispatcher
 import me.lazy_assedninja.sample.repository.RoomRepository
 import me.lazy_assedninja.sample.vo.User

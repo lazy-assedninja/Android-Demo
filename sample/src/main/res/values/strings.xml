@@ -8,12 +8,12 @@
     <string name="title_retrofit_demo">Retrofit Demo</string>
 
     <!-- Navigation -->
-    <string name="navigation_demo_fragment">DemoFragment</string>
-    <string name="navigation_saf_fragment">SAFFragment</string>
-    <string name="navigation_room_fragment">RoomFragment</string>
-    <string name="navigation_documents_provider_fragment">DocumentsProviderFragment</string>
-    <string name="navigation_retrofit_fragment">RetrofitFragment</string>
-    <string name="navigation_retrofit_detail_fragment">RetrofitDetailFragment</string>
+    <string name="navigation_demo_fragment">Demos</string>
+    <string name="navigation_saf_fragment">SAF Demo</string>
+    <string name="navigation_room_fragment">Room Demo</string>
+    <string name="navigation_documents_provider_fragment">DocumentsProvider Demo</string>
+    <string name="navigation_retrofit_fragment">Retrofit Demo</string>
+    <string name="navigation_retrofit_detail_fragment">RetrofitDetail Demo</string>
 
     <!-- Error -->
     <string name="error_null_type">Null Type</string>

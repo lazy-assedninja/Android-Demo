@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import me.lazy_assedninja.library.ui.BaseFragment
 import me.lazy_assedninja.library.utils.LogUtils
 import me.lazy_assedninja.sample.R
@@ -64,5 +67,13 @@ class DocumentsProviderFragment : BaseFragment() {
                 null
             )
         }
+
+        initNavigationUI()
+    }
+
+    private fun initNavigationUI() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
     }
 }

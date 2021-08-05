@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import me.lazy_assedninja.library.ui.BaseFragment
 import me.lazy_assedninja.library.utils.ExecutorUtils
 import me.lazy_assedninja.sample.R
@@ -86,7 +87,14 @@ class DemoFragment : BaseFragment() {
         }
         binding.demoList.adapter = adapter
 
+        initNavigationUI()
         initDemoList(viewModel)
+    }
+
+    private fun initNavigationUI() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
     }
 
     private fun initDemoList(viewModel: DemoViewModel) {
