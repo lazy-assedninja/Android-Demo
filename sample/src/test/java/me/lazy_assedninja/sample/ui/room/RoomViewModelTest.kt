@@ -6,7 +6,6 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 import me.lazy_assedninja.sample.common.TestUtil
 import me.lazy_assedninja.sample.common.mock
 import me.lazy_assedninja.sample.repository.RoomRepository
-import me.lazy_assedninja.sample.utils.MainCoroutineScopeRule
 import me.lazy_assedninja.sample.vo.User
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.notNullValue

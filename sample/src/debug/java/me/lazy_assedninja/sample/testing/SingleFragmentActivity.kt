@@ -1,10 +1,10 @@
 package me.lazy_assedninja.sample.testing
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import me.lazy_assedninja.sample.R
 

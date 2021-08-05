@@ -3,7 +3,6 @@ package me.lazy_assedninja.sample.api
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import okio.Okio
 import okio.buffer
 import okio.source
 import org.hamcrest.CoreMatchers.`is`

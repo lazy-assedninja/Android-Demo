@@ -36,7 +36,7 @@ class DemoViewModelTest {
     }
 
     @Test
-    fun getUtilsList(){
+    fun getUtilsList() {
         viewModel.loadDemoList()
         verify(repository).loadDemo()
         assertThat(viewModel.isLoading.get(), `is`(true))
