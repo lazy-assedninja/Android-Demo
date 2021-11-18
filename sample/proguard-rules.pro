@@ -1,4 +1,4 @@
-#-----------Proguard Configuration-----------
+# ---------- Configuration ----------
 # Specifies the number of optimization passes to be performed. ex. 0 ~ 7
 -optimizationpasses 5
 
@@ -33,7 +33,7 @@
 -keepattributes Signature,Exceptions,*Annotation*,InnerClasses,PermittedSubclasses,EnclosingMethod,Deprecated
 
 
-#-----------Android-----------
+# ---------- Android ----------
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Fragment
 -keep public class * extends android.app.Application
@@ -77,7 +77,7 @@
 -keep class me.lazy_assedninja.sample.vo.** { *; }
 
 
-#-----------Gson-----------
+# ---------- Gson ----------
 # Gson specific classes
 -dontwarn sun.misc.**
 #-keep class com.google.gson.stream.** { *; }
@@ -98,7 +98,7 @@
 }
 
 
-#-----------Information-----------
+# ---------- Information ----------
 # To output a full report of all the rules that R8 applies.
 -printconfiguration full-r8-config.txt
 
