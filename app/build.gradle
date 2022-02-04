@@ -1,0 +1,173 @@
+import me.lazy_assedninja.plugins.*
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'kotlin-allopen'
+    id 'androidx.navigation.safeargs'
+}
+
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'me.lazy_assedninja.demo.library.test.OpenClass'
+}
+
+android {
+    compileSdkVersion ConfigVersions.COMPILE_SDK_VERSION
+    buildToolsVersion ConfigVersions.BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "me.lazy_assedninja.demo"
+        minSdkVersion ConfigVersions.MIN_APP_SDK_VERSION
+        targetSdkVersion ConfigVersions.TARGET_SDK_VERSION
+        versionCode ConfigVersions.VERSION_CODE
+        versionName ConfigVersions.VERSION_NAME
+
+        testInstrumentationRunner "me.lazy_assedninja.demo.DemoTestRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled !project.hasProperty('android.injected.invoked.from.ide')
+        }
+
+        release {
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
+            minifyEnabled true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+
+            // Ensures that all uncompressed files in the archive are aligned relative
+            // to the start of the file.
+            zipAlignEnabled true
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    lintOptions {
+        abortOnError false
+        checkAllWarnings true
+        disable 'MediaCapabilities', 'DuplicateStrings', 'LogConditional', 'ConvertToWebp'
+        htmlOutput file("reports/lint-results-debug.html")
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+
+            all {
+                testLogging {
+                    events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+                }
+            }
+        }
+    }
+
+    jacoco {
+        version = "0.8.7"
+    }
+}
+
+dependencies {
+
+    // Modules
+    implementation project(path: ':library')
+
+    implementation Kotlin.STDLIB
+    implementation AndroidX.CORE
+    implementation AndroidX.APP_COMPAT
+    implementation AndroidX.CONSTRAINT_LAYOUT
+    implementation Google.MATERIAL
+
+    // Lifecycle
+    implementation AndroidX.LIFECYCLE_LIVEDATA
+    implementation AndroidX.LIFECYCLE_VIEWMODEL
+    kapt AndroidX.LIFECYCLE_COMPILER
+    implementation AndroidX.LIFECYCLE_EXTENSIONS
+
+    // Navigation
+    implementation AndroidX.NAVIGATION_FRAGMENT_KTX
+    implementation AndroidX.NAVIGATION_UI_KTX
+
+    // Dagger
+    implementation Google.DAGGER
+    kapt Google.DAGGER_COMPILER
+
+    // Room
+    implementation AndroidX.ROOM_KTX
+    kapt AndroidX.ROOM_COMPILER
+
+    // Gson
+    implementation Google.GSON
+
+    // Glide
+    implementation ThirdParty.GLIDE
+    kapt ThirdParty.GLIDE_COMPILER
+
+    // Retrofit
+    implementation ThirdParty.RETROFIT
+    implementation ThirdParty.RETROFIT_GSON
+
+    // OKHttp
+    implementation ThirdParty.OKHTTP_INTERCEPTOR
+
+    // Document File
+    implementation AndroidX.DOCUMENT_FILE
+
+    // Timber
+    implementation ThirdParty.TIMBER
+
+    // Test
+    testImplementation AndroidX.CORE_TESTING
+    testImplementation ThirdParty.JUNIT
+    androidTestImplementation AndroidX.CORE_TESTING
+    androidTestImplementation AndroidX.TEST_JUNIT
+    androidTestImplementation AndroidX.TEST_ESPRESSO
+
+    // Coroutines Test
+    testImplementation Kotlin.TEST_COROUTINES
+    androidTestImplementation Kotlin.TEST_COROUTINES
+
+    // Mockito
+    testImplementation ThirdParty.MOCKITO_CORE
+    androidTestImplementation ThirdParty.MOCKITO_CORE
+    androidTestImplementation ThirdParty.MOCKITO_ANDROID
+
+    // MockWebServer
+    testImplementation ThirdParty.MOCK_WEB_SERVER
+}
+
+// we need all open to run tests which we enable only for debug builds.
+project.tasks.whenTaskAdded {
+    if (it.name == "testReleaseUnitTest") {
+        it.enabled = false
+    }
+}

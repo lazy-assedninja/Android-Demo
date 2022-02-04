@@ -1,8 +1,10 @@
 package me.lazy_assedninja.plugins
 
+@Suppress("unused")
 object Google {
-    val material = "com.google.android.material:material:${DependenciesVersions.googleMaterial}"
-    val dagger = "com.google.dagger:dagger:${DependenciesVersions.dagger}"
-    val daggerCompiler = "com.google.dagger:dagger-compiler:${DependenciesVersions.dagger}"
-    val gson = "com.google.code.gson:gson:${DependenciesVersions.gson}"
+
+    const val MATERIAL = "com.google.android.material:material:${DependenciesVersions.GOOGLE_MATERIAL}"
+    const val DAGGER = "com.google.dagger:dagger:${DependenciesVersions.DAGGER}"
+    const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${DependenciesVersions.DAGGER}"
+    const val GSON = "com.google.code.gson:gson:${DependenciesVersions.GSON}"
 }

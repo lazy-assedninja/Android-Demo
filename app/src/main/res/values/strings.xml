@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Demo</string>
+
+    <!-- Navigation -->
+    <string name="navigation_demo_fragment">Demos</string>
+    <string name="navigation_saf_fragment">SAF Demo</string>
+    <string name="navigation_room_fragment">Room Demo</string>
+    <string name="navigation_documents_provider_fragment">DocumentsProvider Demo</string>
+    <string name="navigation_retrofit_fragment">Retrofit Demo</string>
+    <string name="navigation_retrofit_detail_fragment">RetrofitDetail Demo</string>
+
+    <!-- Error -->
+    <string name="error_null_type">Null Type</string>
+
+    <!-- SAF Button -->
+    <string name="bt_choose_file">Choose File</string>
+    <string name="bt_choose_folder">Choose Folder</string>
+
+    <!-- SAF Error -->
+    <string name="error_no_activity">No activity found to open &#8220;%1$s&#8221;.</string>
+
+    <!-- Room Title -->
+    <string name="title_add_user">Add User</string>
+    <string name="title_update_user">Update User</string>
+
+    <!-- Room Button -->
+    <string name="bt_user_confirm">Confirm</string>
+    <string name="bt_user_cancel">Cancel</string>
+
+    <!-- Room Hint -->
+    <string name="hint_user_name">User Name</string>
+    <string name="hint_user_email">User Email</string>
+    <string name="hint_user_password">User Password</string>
+
+    <!-- Room Dialog -->
+    <string name="dialog_delete_user">Delete User</string>
+    <string name="dialog_make_sure_to_delete_user">Make sure to delete the user?</string>
+
+    <!-- Room Error -->
+    <string name="error_user_name_can_not_be_empty">User name can\'t be empty.</string>
+    <string name="error_user_email_can_not_be_empty">User email can\'t be empty.</string>
+    <string name="error_user_password_can_not_be_empty">User password can\'t be empty.</string>
+
+    <string name="storage_name">demo</string>
+
+    <!-- Documents Provider Title -->
+    <string name="title_documents_provider">Documents Provider</string>
+
+    <!-- Documents Provider Summary -->
+    <string name="summary_root">&#169;Lazy-assed Ninja</string>
+
+    <!-- Documents Provider File Array -->
+    <array name="array_img_ids">
+        <item>@raw/img_cat_1</item>
+        <item>@raw/img_cat_2</item>
+        <item>@raw/img_cat_3</item>
+        <item>@raw/img_cat_4</item>
+        <item>@raw/img_cat_5</item>
+    </array>
+
+    <array name="array_txt_ids">
+        <item>@raw/cat_names</item>、
+    </array>
+
+    <!-- Retrofit Field -->
+    <string name="field_station_name">Station Name:&#160;</string>
+    <string name="field_total_space">Total Space:&#160;</string>
+    <string name="field_bike_amount">Bike Amount: </string>
+    <string name="field_station_area">Station Area:&#160;</string>
+    <string name="field_modify_date">Modify Date:&#160;</string>
+    <string name="field_latitude">Latitude:&#160;</string>
+    <string name="field_longitude">Longitude:&#160;</string>
+    <string name="field_area">Area:&#160;</string>
+    <string name="field_station_area_english">Station Area English:&#160;</string>
+    <string name="field_station_name_english">Station Name English:&#160;</string>
+    <string name="field_area_english">Area English:&#160;</string>
+    <string name="field_space_amount">Space Amount:&#160;</string>
+    <string name="field_activate">activate:&#160;</string>
+    <string name="field_src_update_time">Src Update Time:&#160;</string>
+    <string name="field_update_time">Update Time:&#160;</string>
+    <string name="field_info_time">Info Time:&#160;</string>
+    <string name="field_info_date">Info Date:&#160;</string>
+</resources>

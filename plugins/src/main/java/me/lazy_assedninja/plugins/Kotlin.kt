@@ -1,8 +1,9 @@
 package me.lazy_assedninja.plugins
 
+@Suppress("unused")
 object Kotlin {
-    val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${DependenciesVersions.kotlin}"
 
-    val coroutinesTest =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${DependenciesVersions.coroutinesTest}"
+    const val STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:${DependenciesVersions.KOTLIN}"
+    const val TEST_COROUTINES =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${DependenciesVersions.TEST_COROUTINES}"
 }

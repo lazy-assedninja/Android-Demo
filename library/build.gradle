@@ -8,14 +8,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion ConfigVersions.compileSdkVersion
-    buildToolsVersion ConfigVersions.buildToolsVersion
+    compileSdkVersion ConfigVersions.COMPILE_SDK_VERSION
+    buildToolsVersion ConfigVersions.BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion ConfigVersions.minLibrarySdkVersion
-        targetSdkVersion ConfigVersions.targetSdkVersion
-        versionCode ConfigVersions.versionCode
-        versionName ConfigVersions.versionName
+        minSdkVersion ConfigVersions.MIN_LIBRARY_SDK_VERSION
+        targetSdkVersion ConfigVersions.TARGET_SDK_VERSION
+        versionCode ConfigVersions.VERSION_CODE
+        versionName ConfigVersions.VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -54,21 +54,16 @@ android {
 }
 
 dependencies {
-    implementation AndroidX.appCompat
-    implementation AndroidX.constraintLayout
-    implementation AndroidX.core
-    implementation Google.material
-    implementation Kotlin.stdlib
+    implementation Kotlin.STDLIB
+    implementation AndroidX.CORE
+    implementation AndroidX.APP_COMPAT
+    implementation Google.MATERIAL
 
     // Recyclerview
-    implementation AndroidX.recyclerview
-
-    // Dagger
-    implementation Google.dagger
-    kapt Google.daggerCompiler
+    implementation AndroidX.RECYCLERVIEW
 
     // Test
-    testImplementation Junit.junit
-    androidTestImplementation AndroidX.testJunit
-    androidTestImplementation AndroidX.testEspresso
+    testImplementation ThirdParty.JUNIT
+    androidTestImplementation AndroidX.TEST_JUNIT
+    androidTestImplementation AndroidX.TEST_ESPRESSO
 }

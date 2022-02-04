@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-debug
-          path: sample/build/outputs/apk/debug/sample-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
         
       - name: Assemble Android Test APK
         run: ./gradlew assembleDebugAndroidTest --full-stacktrace
@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-debug-androidTest
-          path: sample/build/outputs/apk/androidTest/debug/sample-debug-androidTest.apk
+          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
         
   unit_tests:
     name: Unit Tests
@@ -114,4 +114,4 @@ jobs:
           export_default_credentials: true
         
       - name: Run Instrumented Unit Tests In Firebase Test Lab
-        run: gcloud firebase test android run --type instrumentation --app sample-debug.apk --test sample-debug-androidTest.apk --device model=Pixel2,version=30
+        run: gcloud firebase test android run --type instrumentation --app app-debug.apk --test app-debug-androidTest.apk --device model=Pixel2,version=30

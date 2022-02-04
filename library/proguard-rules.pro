@@ -4,9 +4,8 @@
 
 -keepparameternames
 -renamesourcefileattribute SourceFile
--keepattributes Signature,Exceptions,*Annotation*,
-                InnerClasses,PermittedSubclasses,EnclosingMethod,
-                Deprecated,SourceFile,LineNumberTable
+-keepattributes Signature, Exceptions, *Annotation*, InnerClasses, PermittedSubclasses, EnclosingMethod,
+                Deprecated, SourceFile, LineNumberTable
 
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;

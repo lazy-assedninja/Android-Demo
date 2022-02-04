@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="me.lazy_assedninja.demo.ui.saf.SAFViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_choose_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> vm.chooseFile()}"
+            android:text="@string/bt_choose_file" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_choose_folder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{() -> vm.chooseFolder()}"
+            android:text="@string/bt_choose_folder" />
+    </FrameLayout>
+</layout>

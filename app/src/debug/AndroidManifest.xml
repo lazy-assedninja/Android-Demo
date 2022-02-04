@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.lazy_assedninja.demo">
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/icon">
+
+        <activity android:name=".library.testing.SingleFragmentActivity" />
+    </application>
+</manifest>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/demo_fragment">
+
+    <fragment
+        android:id="@+id/demo_fragment"
+        android:name="me.lazy_assedninja.demo.ui.demo.DemoFragment"
+        android:label="@string/navigation_demo_fragment"
+        tools:layout="@layout/demo_fragment">
+
+        <action
+            android:id="@+id/toSAFFragment"
+            app:destination="@id/saf_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/toRoomFragment"
+            app:destination="@id/room_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/toDocumentsProviderFragment"
+            app:destination="@id/documents_provider_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/toRetrofitFragment"
+            app:destination="@id/retrofit_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/saf_fragment"
+        android:name="me.lazy_assedninja.demo.ui.saf.SAFFragment"
+        android:label="@string/navigation_saf_fragment"
+        tools:layout="@layout/saf_fragment" />
+
+    <fragment
+        android:id="@+id/room_fragment"
+        android:name="me.lazy_assedninja.demo.ui.room.RoomFragment"
+        android:label="@string/navigation_room_fragment"
+        tools:layout="@layout/room_fragment" />
+
+    <fragment
+        android:id="@+id/documents_provider_fragment"
+        android:name="me.lazy_assedninja.demo.ui.documents_provider.DocumentsProviderFragment"
+        android:label="@string/navigation_documents_provider_fragment"
+        tools:layout="@layout/documents_provider_fragment" />
+
+    <fragment
+        android:id="@+id/retrofit_fragment"
+        android:name="me.lazy_assedninja.demo.ui.retrofit.RetrofitFragment"
+        android:label="@string/navigation_retrofit_fragment"
+        tools:layout="@layout/retrofit_fragment">
+
+        <action
+            android:id="@+id/toRetrofitDetailFragment"
+            app:destination="@id/retrofit_detail_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/retrofit_detail_fragment"
+        android:name="me.lazy_assedninja.demo.ui.retrofit.detail.RetrofitDetailFragment"
+        android:label="@string/navigation_retrofit_detail_fragment"
+        tools:layout="@layout/retrofit_detail_fragment">
+
+        <argument
+            android:name="youBike"
+            app:argType="me.lazy_assedninja.demo.vo.YouBike" />
+    </fragment>
+</navigation>
