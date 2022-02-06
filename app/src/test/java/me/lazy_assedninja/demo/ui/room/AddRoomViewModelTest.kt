@@ -24,10 +24,10 @@ import org.mockito.Mockito.verify
 class AddRoomViewModelTest {
 
     @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
+    val instantExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
+    val mainCoroutineRule = MainCoroutineRule()
 
     private val insertUser = mock<InsertUser>()
 
@@ -42,7 +42,7 @@ class AddRoomViewModelTest {
     fun checkUserData() {
         viewModel.checkUserData()
 
-        assertThat(getValue(viewModel.checkUserData).peekContent(), `is`(true))
+        assertThat(getValue(viewModel.checkUserData).peekContent(), `is`(Unit))
     }
 
     @Test
@@ -57,13 +57,13 @@ class AddRoomViewModelTest {
         )
         viewModel.addUser(name, email, password)
 
-        assertThat(getValue(viewModel.dismissKeyboard).peekContent(), `is`(true))
+        assertThat(getValue(viewModel.dismissKeyboard).peekContent(), `is`(Unit))
         assertThat(getValue(viewModel.isLoading), `is`(true))
 
         withContext(mainCoroutineRule.dispatcher) {
             verify(insertUser).invoke(user)
             assertThat(getValue(viewModel.isLoading), `is`(false))
-            assertThat(getValue(viewModel.insertFinished).peekContent(), `is`(true))
+            assertThat(getValue(viewModel.insertFinished).peekContent(), `is`(Unit))
         }
     }
 }

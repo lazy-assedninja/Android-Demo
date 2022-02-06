@@ -6,6 +6,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 
+@Suppress("unused")
 class CountingAppExecutors(idleCallback: (() -> Unit)? = null) {
 
     private val lock = Object()

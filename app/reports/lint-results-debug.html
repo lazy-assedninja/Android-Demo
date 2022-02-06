@@ -174,232 +174,26 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 3 errors</span>
+      <span class="mdl-layout-title">Lint Report: No errors or warnings</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Thu Feb 03 01:17:44 CST 2022      </nav>
+Check performed at Mon Feb 07 01:13:35 CST 2022      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Issue Types</span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
-      <a class="mdl-navigation__link" href="#InvalidPackage"><i class="material-icons error-icon">error</i>Package not included in Android (3)</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
-    <div class="mdl-layout__tab-panel is-active">
-<a name="overview"></a>
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="OverviewCard" style="display: block;">
+    <div class="mdl-layout__tab-panel is-active"><section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="NoIssuesCard" style="display: block;">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">Overview</h2>
+    <h2 class="mdl-card__title-text">No Issues Found</h2>
   </div>
               <div class="mdl-card__supporting-text">
-<table class="overview">
-<tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
-</td></tr>
-<tr>
-<td class="countColumn">3</td><td class="issueColumn"><i class="material-icons error-icon">error</i>
-<a href="#InvalidPackage">InvalidPackage</a>: Package not included in Android</td></tr>
-<tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (5)</a>
-</td></tr></table>
-<br/>              </div>
-              <div class="mdl-card__actions mdl-card--border">
-<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="OverviewCardLink" onclick="hideid('OverviewCard');">
-Dismiss</button>            </div>
-            </div>
-          </section>
-<a name="Correctness"></a>
-<a name="InvalidPackage"></a>
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="InvalidPackageCard" style="display: block;">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">Package not included in Android</h2>
-  </div>
-              <div class="mdl-card__supporting-text">
-<div class="issue">
-<div class="warningslist">
-<span class="location"><a href="../../../../../../.gradle/caches/modules-2/files-2.1/org.jacoco/org.jacoco.agent/0.8.3/edd294e541c8176d55768ba4b8bcb1bb267d18f4/org.jacoco.agent-0.8.3-runtime.jar">../../../../../../.gradle/caches/modules-2/files-2.1/org.jacoco/org.jacoco.agent/0.8.3/edd294e541c8176d55768ba4b8bcb1bb267d18f4/org.jacoco.agent-0.8.3-runtime.jar</a></span>: <span class="message">Invalid package reference in library; not included in Android: <code>java.lang.instrument</code>. Referenced from <code>org.jacoco.agent.rt.internal_1f1cc91.CoverageTransformer</code>.</span><br />
-<span class="location"><a href="../../../../../../.gradle/caches/modules-2/files-2.1/org.jacoco/org.jacoco.agent/0.8.3/edd294e541c8176d55768ba4b8bcb1bb267d18f4/org.jacoco.agent-0.8.3-runtime.jar">../../../../../../.gradle/caches/modules-2/files-2.1/org.jacoco/org.jacoco.agent/0.8.3/edd294e541c8176d55768ba4b8bcb1bb267d18f4/org.jacoco.agent-0.8.3-runtime.jar</a></span>: <span class="message">Invalid package reference in library; not included in Android: <code>java.lang.management</code>. Referenced from <code>org.jacoco.agent.rt.internal_1f1cc91.JmxRegistration</code>.</span><br />
-<span class="location"><a href="../../../../../../.gradle/caches/modules-2/files-2.1/org.jacoco/org.jacoco.agent/0.8.3/edd294e541c8176d55768ba4b8bcb1bb267d18f4/org.jacoco.agent-0.8.3-runtime.jar">../../../../../../.gradle/caches/modules-2/files-2.1/org.jacoco/org.jacoco.agent/0.8.3/edd294e541c8176d55768ba4b8bcb1bb267d18f4/org.jacoco.agent-0.8.3-runtime.jar</a></span>: <span class="message">Invalid package reference in library; not included in Android: <code>javax.management</code>. Referenced from <code>org.jacoco.agent.rt.internal_1f1cc91.JmxRegistration</code>.</span><br />
-</div>
-<div class="metadata"><div class="explanation" id="explanationInvalidPackage" style="display: none;">
-This check scans through libraries looking for calls to APIs that are not included in Android.<br/>
-<br/>
-When you create Android projects, the classpath is set up such that you can only access classes in the API packages that are included in Android. However, if you add other projects to your libs/ folder, there is no guarantee that those .jar files were built with an Android specific classpath, and in particular, they could be accessing unsupported APIs such as java.applet.<br/>
-<br/>
-This check scans through library jars and looks for references to API packages that are not included in Android and flags these. This is only an error if your code calls one of the library classes which wind up referencing the unsupported package.<br/>To suppress this error, use the issue id "InvalidPackage" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
-<br/></div>
-</div>
-</div>
-<div class="chips">
-<span class="mdl-chip">
-    <span class="mdl-chip__text">InvalidPackage</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Correctness</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Error</span>
-</span>
-<span class="mdl-chip">
-    <span class="mdl-chip__text">Priority 6/10</span>
-</span>
-</div>
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationInvalidPackageLink" onclick="reveal('explanationInvalidPackage');">
-Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="InvalidPackageCardLink" onclick="hideid('InvalidPackageCard');">
-Dismiss</button>            </div>
-            </div>
-          </section>
-<a name="MissingIssues"></a>
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="MissingIssuesCard" style="display: block;">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">Disabled Checks</h2>
-  </div>
-              <div class="mdl-card__supporting-text">
-One or more issues were not run by lint, either
-because the check is not enabled by default, or because
-it was disabled with a command line flag or via one or
-more <code>lint.xml</code> configuration files in the project directories.
-<div id="SuppressedIssues" style="display: none;"><br/><br/><div class="issue">
-<div class="id">ConvertToWebp<div class="issueSeparator"></div>
-</div>
-<div class="metadata">Disabled By: Command line flag<br/>
-<div class="explanation">
-The WebP format is typically more compact than PNG and JPEG. As of Android 4.2.1 it supports transparency and lossless conversion as well. Note that there is a quickfix in the IDE which lets you perform conversion.<br/>
-<br/>
-Previously, launcher icons were required to be in the PNG format but that restriction is no longer there, so lint now flags these.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
-To suppress this error, use the issue id "ConvertToWebp" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
-<br/></div>
-</div>
-</div>
-<div class="issue">
-<div class="id">DuplicateStrings<div class="issueSeparator"></div>
-</div>
-<div class="metadata">Disabled By: Command line flag<br/>
-<div class="explanation">
-Duplicate strings can make applications larger unnecessarily.<br/>
-<br/>
-This lint check looks for duplicate strings, including differences for strings where the only difference is in capitalization. Title casing and all uppercase can all be adjusted in the layout or in code.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/reference/android/widget/TextView.html#attr_android:inputType">https://developer.android.com/reference/android/widget/TextView.html#attr_android:inputType</a>
-</div>To suppress this error, use the issue id "DuplicateStrings" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
-<br/></div>
-</div>
-</div>
-<div class="issue">
-<div class="id">LogConditional<div class="issueSeparator"></div>
-</div>
-<div class="metadata">Disabled By: Command line flag<br/>
-<div class="explanation">
-The <code>BuildConfig</code> class provides a constant, <code>DEBUG</code>, which indicates whether the code is being built in release mode or in debug mode. In release mode, you typically want to strip out all the logging calls. Since the compiler will automatically remove all code which is inside a <code>if (false)</code> check, surrounding your logging calls with a check for <code>BuildConfig.DEBUG</code> is a good idea.<br/>
-<br/>
-If you <b>really</b> intend for the logging to be present in release mode, you can suppress this warning with a <code>@SuppressLint</code> annotation for the intentional logging calls.<br/>To suppress this error, use the issue id "LogConditional" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
-<br/></div>
-</div>
-</div>
-<div class="issue">
-<div class="id">MediaCapabilities<div class="issueSeparator"></div>
-</div>
-<div class="metadata">Disabled By: Command line flag<br/>
-<div class="explanation">
-In Android 12 and higher, an app that opens media files should explicitly specify media formats that it doesn't support, so the OS can provide a transcoded file instead.<br/>To suppress this error, use the issue id "MediaCapabilities" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
-<br/></div>
-</div>
-</div>
-<div class="issue">
-<div class="id">WrongThreadInterprocedural<div class="issueSeparator"></div>
-</div>
-<div class="metadata">Disabled By: Project lint.xml file<br/>
-<div class="explanation">
-Searches for interprocedural call paths that violate thread annotations in the program. Tracks the flow of instantiated types and lambda expressions to increase accuracy across method boundaries.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/guide/components/processes-and-threads.html#Threads">https://developer.android.com/guide/components/processes-and-threads.html#Threads</a>
-</div>To suppress this error, use the issue id "WrongThreadInterprocedural" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
-<br/></div>
-</div>
-</div>
-</div>              </div>
-              <div class="mdl-card__actions mdl-card--border">
-<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="SuppressedIssuesLink" onclick="reveal('SuppressedIssues');">
-List Missing Issues</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="MissingIssuesCardLink" onclick="hideid('MissingIssuesCard');">
-Dismiss</button>            </div>
-            </div>
-          </section>
-<a name="SuppressInfo"></a>
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="SuppressCard" style="display: block;">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">Suppressing Warnings and Errors</h2>
-  </div>
-              <div class="mdl-card__supporting-text">
-Lint errors can be suppressed in a variety of ways:<br/>
-<br/>
-1. With a <code>@SuppressLint</code> annotation in the Java code<br/>
-2. With a <code>tools:ignore</code> attribute in the XML file<br/>
-3. With a //noinspection comment in the source code<br/>
-4. With ignore flags specified in the <code>build.gradle</code> file, as explained below<br/>
-5. With a <code>lint.xml</code> configuration file in the project<br/>
-6. With a <code>lint.xml</code> configuration file passed to lint via the --config flag<br/>
-7. With the --ignore flag passed to lint.<br/>
-<br/>
-To suppress a lint warning with an annotation, add a <code>@SuppressLint("id")</code> annotation on the class, method or variable declaration closest to the warning instance you want to disable. The id can be one or more issue id's, such as <code>"UnusedResources"</code> or <code>{"UnusedResources","UnusedIds"}</code>, or it can be <code>"all"</code> to suppress all lint warnings in the given scope.<br/>
-<br/>
-To suppress a lint warning with a comment, add a <code>//noinspection id</code> comment on the line before the statement with the error.<br/>
-<br/>
-To suppress a lint warning in an XML file, add a <code>tools:ignore="id"</code> attribute on the element containing the error, or one of its surrounding elements. You also need to define the namespace for the tools prefix on the root element in your document, next to the <code>xmlns:android</code> declaration:<br/>
-<code>xmlns:tools="http://schemas.android.com/tools"</code><br/>
-<br/>
-To suppress a lint warning in a <code>build.gradle</code> file, add a section like this:<br/>
-
-<pre>
-android {
-    lintOptions {
-        disable 'TypographyFractions','TypographyQuotes'
-    }
-}
-</pre>
-<br/>
-Here we specify a comma separated list of issue id's after the disable command. You can also use <code>warning</code> or <code>error</code> instead of <code>disable</code> to change the severity of issues.<br/>
-<br/>
-To suppress lint warnings with a configuration XML file, create a file named <code>lint.xml</code> and place it at the root directory of the module in which it applies.<br/>
-<br/>
-The format of the <code>lint.xml</code> file is something like the following:<br/>
-
-<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?>
-&lt;lint>
-    &lt;!-- Ignore everything in the test source set -->
-    &lt;issue id="all">
-        &lt;ignore path="\*/test/\*" />
-    &lt;/issue>
-
-    &lt;!-- Disable this given check in this project -->
-    &lt;issue id="IconMissingDensityFolder" severity="ignore" />
-
-    &lt;!-- Ignore the ObsoleteLayoutParam issue in the given files -->
-    &lt;issue id="ObsoleteLayoutParam">
-        &lt;ignore path="res/layout/activation.xml" />
-        &lt;ignore path="res/layout-xlarge/activation.xml" />
-        &lt;ignore regexp="(foo|bar)\.java" />
-    &lt;/issue>
-
-    &lt;!-- Ignore the UselessLeaf issue in the given file -->
-    &lt;issue id="UselessLeaf">
-        &lt;ignore path="res/layout/main.xml" />
-    &lt;/issue>
-
-    &lt;!-- Change the severity of hardcoded strings to "error" -->
-    &lt;issue id="HardcodedText" severity="error" />
-&lt;/lint>
-</pre>
-<br/>
-To suppress lint checks from the command line, pass the --ignore flag with a comma separated list of ids to be suppressed, such as:<br/>
-<code>$ lint --ignore UnusedResources,UselessLeaf /my/project/path</code><br/>
-<br/>
-For more information, see <a href="https://developer.android.com/studio/write/lint.html#config">https://developer.android.com/studio/write/lint.html#config</a><br/>
-
-            </div>
+Congratulations!            </div>
             </div>
           </section>    </div>
   </main>

@@ -20,31 +20,31 @@ class AddRoomViewModel @Inject constructor(
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
-    private val _checkUserData = MutableLiveData<Event<Boolean>>()
-    val checkUserData: LiveData<Event<Boolean>>
+    private val _checkUserData = MutableLiveData<Event<Unit>>()
+    val checkUserData: LiveData<Event<Unit>>
         get() = _checkUserData
 
-    private val _dismissKeyboard = MutableLiveData<Event<Boolean>>()
-    val dismissKeyboard: LiveData<Event<Boolean>>
+    private val _dismissKeyboard = MutableLiveData<Event<Unit>>()
+    val dismissKeyboard: LiveData<Event<Unit>>
         get() = _dismissKeyboard
 
-    private val _insertFinished = MutableLiveData<Event<Boolean>>()
-    val insertFinished: LiveData<Event<Boolean>>
+    private val _insertFinished = MutableLiveData<Event<Unit>>()
+    val insertFinished: LiveData<Event<Unit>>
         get() = _insertFinished
 
     fun checkUserData() {
-        _checkUserData.value = Event(true)
+        _checkUserData.value = Event(Unit)
     }
 
     fun addUser(name: String, email: String, password: String) {
-        _dismissKeyboard.value = Event(true)
+        _dismissKeyboard.value = Event(Unit)
 
         _isLoading.value = true
         viewModelScope.launch {
             insert(User(name = name, email = email, password = password))
 
             _isLoading.value = false
-            _insertFinished.value = Event(true)
+            _insertFinished.value = Event(Unit)
         }
     }
 }

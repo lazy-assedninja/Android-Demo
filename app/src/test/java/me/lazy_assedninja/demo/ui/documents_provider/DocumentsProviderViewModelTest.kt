@@ -25,10 +25,10 @@ import org.mockito.Mockito.verify
 class DocumentsProviderViewModelTest {
 
     @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
+    val instantExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
+    val mainCoroutineRule = MainCoroutineRule()
 
     private val isOpened = true
     private val isDocumentsProviderOpened = mock<IsDocumentsProviderOpened>()

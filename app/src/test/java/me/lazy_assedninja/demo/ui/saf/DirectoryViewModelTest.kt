@@ -26,10 +26,10 @@ import org.mockito.Mockito.verify
 class DirectoryViewModelTest {
 
     @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
+    val instantExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
+    val mainCoroutineRule = MainCoroutineRule()
 
     private lateinit var viewModel: DirectoryViewModel
 

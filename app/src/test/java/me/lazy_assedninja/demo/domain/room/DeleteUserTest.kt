@@ -25,6 +25,7 @@ class DeleteUserTest {
     val mainCoroutineRule = MainCoroutineRule()
 
     private val roomRepository = mock<RoomRepository>()
+
     private lateinit var deleteUser: DeleteUser
 
     @Before

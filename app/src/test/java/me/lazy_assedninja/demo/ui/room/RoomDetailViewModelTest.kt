@@ -29,10 +29,10 @@ import org.mockito.Mockito.*
 class RoomDetailViewModelTest {
 
     @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
+    val instantExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
+    val mainCoroutineRule = MainCoroutineRule()
 
     private val userID = 1L
     private val name = "Lazy-assed Ninja"
@@ -111,7 +111,7 @@ class RoomDetailViewModelTest {
     fun checkUserData() {
         viewModel.checkUserData()
 
-        assertThat(getValue(viewModel.checkUserData).peekContent(), `is`(true))
+        assertThat(getValue(viewModel.checkUserData).peekContent(), `is`(Unit))
     }
 
     @Test
@@ -119,13 +119,13 @@ class RoomDetailViewModelTest {
         viewModel.setUserID(userID)
         viewModel.updateUser(name, email, password)
 
-        assertThat(getValue(viewModel.dismissKeyboard).peekContent(), `is`(true))
+        assertThat(getValue(viewModel.dismissKeyboard).peekContent(), `is`(Unit))
         assertThat(getValue(viewModel.isLoading), `is`(true))
 
         withContext(mainCoroutineRule.dispatcher) {
             verify(updateUser).invoke(user)
             assertThat(getValue(viewModel.isLoading), `is`(false))
-            assertThat(getValue(viewModel.updateFinished).peekContent(), `is`(true))
+            assertThat(getValue(viewModel.updateFinished).peekContent(), `is`(Unit))
         }
     }
 }

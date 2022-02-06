@@ -28,6 +28,7 @@ class GetDemoListTest {
     val mainCoroutineRule = MainCoroutineRule()
 
     private val demoRepository = mock<DemoRepository>()
+
     private lateinit var getDemoList: GetDemoList
 
     @Before

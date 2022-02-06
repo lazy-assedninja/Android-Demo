@@ -24,15 +24,15 @@ class RoomRepositoryTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private val dao = mock<UserDao>()
-    private lateinit var repository: RoomRepository
-
     private val testUser = createUser(
         id = 1L,
         name = "Lazy-assed Ninja",
         email = "henryhuang861219@gmail.com",
         password = "123456"
     )
+    private val dao = mock<UserDao>()
+
+    private lateinit var repository: RoomRepository
 
     @Before
     fun init() {

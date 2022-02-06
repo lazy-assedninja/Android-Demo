@@ -26,6 +26,7 @@ class GetUserListLiveDataTest {
     val instantExecutorRule = InstantTaskExecutorRule()
 
     private val roomRepository = mock<RoomRepository>()
+
     private lateinit var getUserListLiveData: GetUserListLiveData
 
     @Before

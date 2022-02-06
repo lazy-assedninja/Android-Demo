@@ -1,4 +1,4 @@
-package me.lazy_assedninja.demo.library.testing
+package me.lazy_assedninja.demo.testing
 
 import android.os.Bundle
 import android.view.ViewGroup

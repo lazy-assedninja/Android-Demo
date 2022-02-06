@@ -38,9 +38,11 @@ class NetworkBoundResourceTest(private val useRealExecutors: Boolean) {
     val instantExecutorRule = InstantTaskExecutorRule()
 
     private val fetchedOnce = AtomicBoolean(false)
+
     private lateinit var countingAppExecutors: CountingAppExecutors
 
     private val dbData = MutableLiveData<Ninja>()
+
     private lateinit var handleSaveCallResult: (Ninja) -> Unit
     private lateinit var handleShouldMatch: (Ninja?) -> Boolean
     private lateinit var handleCreateCall: () -> LiveData<ApiResponse<Ninja>>
@@ -86,7 +88,6 @@ class NetworkBoundResourceTest(private val useRealExecutors: Boolean) {
         } catch (t: Throwable) {
             throw AssertionError(t)
         }
-
     }
 
     @Test
@@ -100,14 +101,15 @@ class NetworkBoundResourceTest(private val useRealExecutors: Boolean) {
         }
         val networkResult = Ninja(1)
         handleCreateCall = { createCall(Response.success(networkResult)) }
-
         val observer = mock<Observer<Resource<Ninja>>>()
         networkBoundResource.asLiveData().observeForever(observer)
         drain()
+
         verify(observer).onChanged(Resource.loading(null))
         reset(observer)
         dbData.value = null
         drain()
+
         assertThat(saved.get(), `is`(networkResult))
         verify(observer).onChanged(Resource.success(fetchedDbValue))
     }
@@ -121,14 +123,15 @@ class NetworkBoundResourceTest(private val useRealExecutors: Boolean) {
         }
         val body = "Error.".toResponseBody("text/html".toMediaTypeOrNull())
         handleCreateCall = { createCall(Response.error(500, body)) }
-
         val observer = mock<Observer<Resource<Ninja>>>()
         networkBoundResource.asLiveData().observeForever(observer)
         drain()
+
         verify(observer).onChanged(Resource.loading(null))
         reset(observer)
         dbData.value = null
         drain()
+
         assertThat(saved.get(), `is`(false))
         verify(observer).onChanged(Resource.error("Error.", null))
         verifyNoMoreInteractions(observer)
@@ -145,16 +148,19 @@ class NetworkBoundResourceTest(private val useRealExecutors: Boolean) {
         val observer = mock<Observer<Resource<Ninja>>>()
         networkBoundResource.asLiveData().observeForever(observer)
         drain()
+
         verify(observer).onChanged(Resource.loading(null))
         reset(observer)
         val dbNinja = Ninja(1)
         dbData.value = dbNinja
         drain()
+
         verify(observer).onChanged(Resource.success(dbNinja))
         assertThat(saved.get(), `is`(false))
         val dbNinja2 = Ninja(2)
         dbData.value = dbNinja2
         drain()
+
         verify(observer).onChanged(Resource.success(dbNinja2))
         verifyNoMoreInteractions(observer)
     }
@@ -170,25 +176,25 @@ class NetworkBoundResourceTest(private val useRealExecutors: Boolean) {
         val body = "Error.".toResponseBody("text/html".toMediaTypeOrNull())
         val apiResponseLiveData = MutableLiveData<ApiResponse<Ninja>>()
         handleCreateCall = { apiResponseLiveData }
-
         val observer = mock<Observer<Resource<Ninja>>>()
         networkBoundResource.asLiveData().observeForever(observer)
         drain()
+
         verify(observer).onChanged(Resource.loading(null))
         reset(observer)
-
         dbData.value = dbValue
         drain()
-        verify(observer).onChanged(Resource.loading(dbValue))
 
+        verify(observer).onChanged(Resource.loading(dbValue))
         apiResponseLiveData.value = ApiResponse.create(Response.error(400, body))
         drain()
+
         assertThat(saved.get(), `is`(false))
         verify(observer).onChanged(Resource.error("Error.", dbValue))
-
         val dbValue2 = Ninja(2)
         dbData.value = dbValue2
         drain()
+
         verify(observer).onChanged(Resource.error("Error.", dbValue2))
         verifyNoMoreInteractions(observer)
     }
@@ -205,19 +211,20 @@ class NetworkBoundResourceTest(private val useRealExecutors: Boolean) {
         }
         val apiResponseLiveData = MutableLiveData<ApiResponse<Ninja>>()
         handleCreateCall = { apiResponseLiveData }
-
         val observer = mock<Observer<Resource<Ninja>>>()
         networkBoundResource.asLiveData().observeForever(observer)
         drain()
+
         verify(observer).onChanged(Resource.loading(null))
         reset(observer)
-
         dbData.value = dbValue
         drain()
+
         val networkResult = Ninja(1)
         verify(observer).onChanged(Resource.loading(dbValue))
         apiResponseLiveData.value = ApiResponse.create(Response.success(networkResult))
         drain()
+
         assertThat(saved.get(), `is`(networkResult))
         verify(observer).onChanged(Resource.success(dbValue2))
         verifyNoMoreInteractions(observer)

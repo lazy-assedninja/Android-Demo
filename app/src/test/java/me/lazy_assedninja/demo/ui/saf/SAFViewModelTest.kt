@@ -30,13 +30,13 @@ class SAFViewModelTest {
     fun chooseFile() {
         viewModel.chooseFile()
 
-        assertThat(getValue(viewModel.chooseFile).peekContent(), `is`(true))
+        assertThat(getValue(viewModel.chooseFile).peekContent(), `is`(Unit))
     }
 
     @Test
     fun chooseFolder() {
         viewModel.chooseFolder()
 
-        assertThat(getValue(viewModel.chooseFolder).peekContent(), `is`(true))
+        assertThat(getValue(viewModel.chooseFolder).peekContent(), `is`(Unit))
     }
 }

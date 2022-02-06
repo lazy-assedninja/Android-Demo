@@ -25,6 +25,7 @@ class UpdateUserTest {
     val mainCoroutineRule = MainCoroutineRule()
 
     private val roomRepository = mock<RoomRepository>()
+
     private lateinit var updateUser: UpdateUser
 
     @Before

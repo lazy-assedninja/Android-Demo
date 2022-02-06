@@ -30,6 +30,7 @@ class IsDocumentsProviderOpenedTest {
     private val key = "documents_provider"
     private val default = "false"
     private val storageRepository = mock<StorageRepository>()
+
     private lateinit var isDocumentsProviderOpened: IsDocumentsProviderOpened
 
     @Before

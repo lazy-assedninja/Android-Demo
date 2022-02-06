@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.
  */
+@Suppress("MemberVisibilityCanBePrivate")
 data class Event<out T>(private val content: T) {
 
     var hasBeenHandled = false

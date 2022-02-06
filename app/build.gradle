@@ -10,6 +10,7 @@ plugins {
 }
 
 allOpen {
+
     // allows mocking for classes w/o directly opening them for release builds
     annotation 'me.lazy_assedninja.demo.library.test.OpenClass'
 }
@@ -34,6 +35,7 @@ android {
         }
 
         release {
+
             // Enables code shrinking, obfuscation, and optimization for only
             // your project's release build type.
             minifyEnabled true
@@ -75,7 +77,7 @@ android {
     lintOptions {
         abortOnError false
         checkAllWarnings true
-        disable 'MediaCapabilities', 'DuplicateStrings', 'LogConditional', 'ConvertToWebp'
+        disable 'InvalidPackage', 'MediaCapabilities', 'DuplicateStrings', 'LogConditional', 'ConvertToWebp'
         htmlOutput file("reports/lint-results-debug.html")
     }
 

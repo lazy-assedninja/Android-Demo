@@ -43,16 +43,16 @@ class RoomDetailViewModel @Inject constructor(
     val snackBarText: LiveData<Event<String>>
         get() = _snackBarText
 
-    private val _checkUserData = MutableLiveData<Event<Boolean>>()
-    val checkUserData: LiveData<Event<Boolean>>
+    private val _checkUserData = MutableLiveData<Event<Unit>>()
+    val checkUserData: LiveData<Event<Unit>>
         get() = _checkUserData
 
-    private val _dismissKeyboard = MutableLiveData<Event<Boolean>>()
-    val dismissKeyboard: LiveData<Event<Boolean>>
+    private val _dismissKeyboard = MutableLiveData<Event<Unit>>()
+    val dismissKeyboard: LiveData<Event<Unit>>
         get() = _dismissKeyboard
 
-    private val _updateFinished = MutableLiveData<Event<Boolean>>()
-    val updateFinished: LiveData<Event<Boolean>>
+    private val _updateFinished = MutableLiveData<Event<Unit>>()
+    val updateFinished: LiveData<Event<Unit>>
         get() = _updateFinished
 
     fun setUserID(userID: Long) {
@@ -60,11 +60,11 @@ class RoomDetailViewModel @Inject constructor(
     }
 
     fun checkUserData() {
-        _checkUserData.value = Event(true)
+        _checkUserData.value = Event(Unit)
     }
 
     fun updateUser(name: String, email: String, password: String) {
-        _dismissKeyboard.value = Event(true)
+        _dismissKeyboard.value = Event(Unit)
 
         _isLoading.value = true
         viewModelScope.launch {
@@ -72,7 +72,7 @@ class RoomDetailViewModel @Inject constructor(
                 update(User(id = it, name = name, email = email, password = password))
 
                 _isLoading.value = false
-                _updateFinished.value = Event(true)
+                _updateFinished.value = Event(Unit)
             }
         }
     }

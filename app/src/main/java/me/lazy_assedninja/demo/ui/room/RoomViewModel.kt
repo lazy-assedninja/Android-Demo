@@ -34,8 +34,8 @@ class RoomViewModel @Inject constructor(
     val snackBarText: LiveData<Event<String>>
         get() = _snackBarText
 
-    private val _addUser = MutableLiveData<Event<Boolean>>()
-    val addUser: LiveData<Event<Boolean>>
+    private val _addUser = MutableLiveData<Event<Unit>>()
+    val addUser: LiveData<Event<Unit>>
         get() = _addUser
 
     private val _openDetail = MutableLiveData<Event<Long>>()
@@ -46,8 +46,8 @@ class RoomViewModel @Inject constructor(
     val showDeleteDialog: LiveData<Event<User>>
         get() = _showDeleteDialog
 
-    fun addUser(isAdd: Boolean) {
-        _addUser.value = Event(isAdd)
+    fun addUser() {
+        _addUser.value = Event(Unit)
     }
 
     fun openDetail(userID: Long) {

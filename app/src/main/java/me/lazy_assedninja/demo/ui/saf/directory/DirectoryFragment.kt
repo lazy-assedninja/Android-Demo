@@ -7,18 +7,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.snackbar.Snackbar
 import me.lazy_assedninja.demo.R
 import me.lazy_assedninja.demo.data.EventObserver
 import me.lazy_assedninja.demo.databinding.DirectoryFragmentBinding
-
-import me.lazy_assedninja.demo.ui.index.MainActivity
 import me.lazy_assedninja.demo.library.util.AppExecutors
+import me.lazy_assedninja.demo.ui.index.MainActivity
 import me.lazy_assedninja.demo.util.autoCleared
 import javax.inject.Inject
 
@@ -102,11 +101,13 @@ class DirectoryFragment : BottomSheetDialogFragment() {
             }
             startActivity(openIntent)
         } catch (ex: ActivityNotFoundException) {
-            Toast.makeText(
-                context,
-                resources.getString(R.string.error_no_activity, document.name),
-                Toast.LENGTH_SHORT
-            ).show()
+            view?.let {
+                Snackbar.make(
+                    it,
+                    getString(R.string.error_no_activity, document.name),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

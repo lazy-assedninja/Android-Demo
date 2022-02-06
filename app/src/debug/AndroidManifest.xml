@@ -5,6 +5,6 @@
         android:allowBackup="false"
         android:icon="@mipmap/icon">
 
-        <activity android:name=".library.testing.SingleFragmentActivity" />
+        <activity android:name=".testing.SingleFragmentActivity" />
     </application>
 </manifest>

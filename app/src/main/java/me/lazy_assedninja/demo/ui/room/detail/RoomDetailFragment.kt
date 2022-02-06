@@ -64,52 +64,50 @@ class RoomDetailFragment : BaseBottomSheetDialogFragment() {
             }
         })
         viewModel.checkUserData.observe(viewLifecycleOwner, EventObserver {
-            if (it) checkUserData()
+            checkUserData()
         })
         viewModel.dismissKeyboard.observe(viewLifecycleOwner, EventObserver {
-            if (it) dismissKeyboard(view?.windowToken)
+            dismissKeyboard(view?.windowToken)
         })
         viewModel.updateFinished.observe(viewLifecycleOwner, EventObserver {
-            if (it) dismiss()
+            dismiss()
         })
     }
 
     private fun checkUserData() {
-        context?.let { context ->
-            val name = binding.tilUserName.editText?.text?.toString().let {
-                if (it.isNullOrEmpty()) {
-                    binding.tilUserName.error = context.getString(
-                        R.string.error_user_name_can_not_be_empty
-                    )
-                    ""
-                } else {
-                    binding.tilUserName.error = null
-                    it
-                }
+        val name = binding.tilUserName.editText?.text?.toString().let {
+            if (it.isNullOrEmpty()) {
+                binding.tilUserName.error = getString(
+                    R.string.error_user_name_can_not_be_empty
+                )
+                return@checkUserData
+            } else {
+                binding.tilUserName.error = null
+                it
             }
-            val email = binding.tilUserEmail.editText?.text?.toString().let {
-                if (it.isNullOrEmpty()) {
-                    binding.tilUserEmail.error = context.getString(
-                        R.string.error_user_email_can_not_be_empty
-                    )
-                    ""
-                } else {
-                    binding.tilUserEmail.error = null
-                    it
-                }
-            }
-            val password = binding.tilUserPassword.editText?.text?.toString().let {
-                if (it.isNullOrEmpty()) {
-                    binding.tilUserPassword.error = context.getString(
-                        R.string.error_user_password_can_not_be_empty
-                    )
-                    ""
-                } else {
-                    binding.tilUserPassword.error = null
-                    it
-                }
-            }
-            viewModel.updateUser(name, email, password)
         }
+        val email = binding.tilUserEmail.editText?.text?.toString().let {
+            if (it.isNullOrEmpty()) {
+                binding.tilUserEmail.error = getString(
+                    R.string.error_user_email_can_not_be_empty
+                )
+                return@checkUserData
+            } else {
+                binding.tilUserEmail.error = null
+                it
+            }
+        }
+        val password = binding.tilUserPassword.editText?.text?.toString().let {
+            if (it.isNullOrEmpty()) {
+                binding.tilUserPassword.error = getString(
+                    R.string.error_user_password_can_not_be_empty
+                )
+                return@checkUserData
+            } else {
+                binding.tilUserPassword.error = null
+                it
+            }
+        }
+        viewModel.updateUser(name, email, password)
     }
 }

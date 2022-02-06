@@ -10,19 +10,19 @@ import javax.inject.Inject
 @SAFScope
 class SAFViewModel @Inject constructor() : ViewModel() {
 
-    private val _chooseFile = MutableLiveData<Event<Boolean>>()
-    val chooseFile: LiveData<Event<Boolean>>
+    private val _chooseFile = MutableLiveData<Event<Unit>>()
+    val chooseFile: LiveData<Event<Unit>>
         get() = _chooseFile
 
-    private val _chooseFolder = MutableLiveData<Event<Boolean>>()
-    val chooseFolder: LiveData<Event<Boolean>>
+    private val _chooseFolder = MutableLiveData<Event<Unit>>()
+    val chooseFolder: LiveData<Event<Unit>>
         get() = _chooseFolder
 
     fun chooseFile() {
-        _chooseFile.value = Event(true)
+        _chooseFile.value = Event(Unit)
     }
 
     fun chooseFolder() {
-        _chooseFolder.value = Event(true)
+        _chooseFolder.value = Event(Unit)
     }
 }

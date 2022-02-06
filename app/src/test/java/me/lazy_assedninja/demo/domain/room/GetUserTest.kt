@@ -30,7 +30,9 @@ class GetUserTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
+    private val userID = 1L
     private val roomRepository = mock<RoomRepository>()
+
     private lateinit var getUser: GetUser
 
     @Before
@@ -40,7 +42,6 @@ class GetUserTest {
 
     @Test
     fun invoke() = runTest {
-        val userID = 1L
         val user = createUser(
             id = 1L,
             name = "Lazy-assed Ninja",
@@ -56,7 +57,6 @@ class GetUserTest {
 
     @Test
     fun exception() = runTest {
-        val userID = 1L
         val exception = Exception("Exception.")
         `when`(roomRepository.getUser(userID)).thenThrow(exception)
 

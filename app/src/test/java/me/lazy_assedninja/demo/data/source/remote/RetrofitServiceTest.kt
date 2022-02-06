@@ -24,8 +24,7 @@ import java.util.concurrent.TimeUnit
 @RunWith(JUnit4::class)
 class RetrofitServiceTest {
 
-    @Rule
-    @JvmField
+    @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var mockWebServer: MockWebServer

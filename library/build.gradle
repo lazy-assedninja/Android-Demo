@@ -4,7 +4,6 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-allopen'
 }
 
 android {
@@ -23,6 +22,7 @@ android {
 
     buildTypes {
         release {
+
             // Enables code shrinking, obfuscation, and optimization for only
             // your project's release build type.
             minifyEnabled true

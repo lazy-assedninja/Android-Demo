@@ -24,6 +24,7 @@ class OpenOrCloseDocumentsProviderTest {
     val mainCoroutineRule = MainCoroutineRule()
 
     private val storageRepository = mock<StorageRepository>()
+
     private lateinit var openOrCloseDocumentsProvider: OpenOrCloseDocumentsProvider
 
     @Before

@@ -30,7 +30,7 @@
             android:layout_marginBottom="20dp"
             android:backgroundTint="?attr/colorAccent"
             android:importantForAccessibility="no"
-            android:onClick="@{() -> vm.addUser(true)}"
+            android:onClick="@{() -> vm.addUser()}"
             android:src="@drawable/ic_add_white_24dp"
             app:borderWidth="0dp"
             app:tint="?attr/colorPrimary" />

@@ -8,19 +8,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import me.lazy_assedninja.demo.R
 import me.lazy_assedninja.demo.data.EventObserver
 import me.lazy_assedninja.demo.databinding.SafFragmentBinding
 import me.lazy_assedninja.demo.library.ui.BaseFragment
+import me.lazy_assedninja.demo.library.util.AppExecutors
 import me.lazy_assedninja.demo.ui.index.MainActivity
 import me.lazy_assedninja.demo.ui.saf.directory.DirectoryFragment
-import me.lazy_assedninja.demo.library.util.AppExecutors
 import me.lazy_assedninja.demo.util.autoCleared
 import javax.inject.Inject
 
@@ -75,10 +75,10 @@ class SAFFragment : BaseFragment() {
 
     private fun initData() {
         viewModel.chooseFile.observe(viewLifecycleOwner, EventObserver {
-            if (it) openDocument.launch(arrayOf(MIME_TYPE_IMAGE))
+            openDocument.launch(arrayOf(MIME_TYPE_IMAGE))
         })
         viewModel.chooseFolder.observe(viewLifecycleOwner, EventObserver {
-            if (it) openDocumentTree.launch(null)
+            openDocumentTree.launch(null)
         })
     }
 
@@ -118,11 +118,13 @@ class SAFFragment : BaseFragment() {
             }
             startActivity(openIntent)
         } catch (ex: ActivityNotFoundException) {
-            Toast.makeText(
-                context,
-                resources.getString(R.string.error_no_activity, document.name),
-                Toast.LENGTH_SHORT
-            ).show()
+            view?.let {
+                Snackbar.make(
+                    it,
+                    getString(R.string.error_no_activity, document.name),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

@@ -28,10 +28,10 @@ import org.mockito.Mockito.*
 class RoomViewModelTest {
 
     @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
+    val instantExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
+    val mainCoroutineRule = MainCoroutineRule()
 
     private val user = createUser(
         id = 1L,
@@ -102,10 +102,9 @@ class RoomViewModelTest {
     @Test
     fun addUser() {
         viewModel = RoomViewModel(getUserListLiveData, deleteUser)
-        val isAdd = true
-        viewModel.addUser(isAdd)
+        viewModel.addUser()
 
-        assertThat(getValue(viewModel.addUser).peekContent(), `is`(isAdd))
+        assertThat(getValue(viewModel.addUser).peekContent(), `is`(Unit))
     }
 
     @Test

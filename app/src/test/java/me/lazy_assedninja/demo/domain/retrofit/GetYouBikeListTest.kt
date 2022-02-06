@@ -12,6 +12,7 @@ import org.mockito.Mockito.verify
 class GetYouBikeListTest {
 
     private val retrofitRepository = mock<RetrofitRepository>()
+
     private lateinit var getYouBikeList: GetYouBikeList
 
     @Before

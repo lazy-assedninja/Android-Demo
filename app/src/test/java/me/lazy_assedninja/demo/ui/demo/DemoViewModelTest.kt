@@ -24,10 +24,10 @@ import org.mockito.Mockito.verify
 class DemoViewModelTest {
 
     @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
+    val instantExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val instantExecutorRule = InstantTaskExecutorRule()
+    val mainCoroutineRule = MainCoroutineRule()
 
     private val demo1 = "demo1"
     private val demo2 = "demo2"

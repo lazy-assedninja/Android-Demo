@@ -35,7 +35,7 @@ class DemoListAdapter(
     }
 
     override fun bind(binding: DemoItemBinding, item: String) {
-        binding.demoName = item
+        binding.demo = item
         binding.viewModel = viewModel
     }
 }

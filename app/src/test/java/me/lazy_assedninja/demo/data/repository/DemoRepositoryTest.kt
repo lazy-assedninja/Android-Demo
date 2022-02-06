@@ -30,6 +30,6 @@ class DemoRepositoryTest {
 
         val loaded = repository.getDemoList()
         assertThat(loaded.size, `is`(4))
-        assertThat(loaded[1], `is`(demo))
+        assertThat(loaded[0], `is`(demo))
     }
 }

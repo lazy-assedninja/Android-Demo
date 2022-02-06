@@ -21,10 +21,10 @@ import org.junit.runner.RunWith
 class UserDaoTest : DbTest() {
 
     @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+    val mainCoroutineRule = MainCoroutineRule()
 
     private val userID = 1L
     private val userName = "Lazy-assed Ninja"

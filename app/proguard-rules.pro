@@ -105,6 +105,5 @@
 # List dead code of the input class files.
 -printusage dead_code.txt
 
-# Print the mapping from old names to new names for classes
-# and class members that have been renamed.
+# Print the mapping from old names to new names for classes and class members that have been renamed.
 -printmapping mapping.txt

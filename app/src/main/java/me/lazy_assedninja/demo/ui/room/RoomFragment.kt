@@ -79,8 +79,8 @@ class RoomFragment : BaseFragment() {
                 Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
             }
         })
-        viewModel.addUser.observe(viewLifecycleOwner, EventObserver { isAdd ->
-            if (isAdd) activity?.supportFragmentManager?.let { supportFragmentManager ->
+        viewModel.addUser.observe(viewLifecycleOwner, EventObserver {
+            activity?.supportFragmentManager?.let { supportFragmentManager ->
                 AddRoomFragment().apply {
                     show(supportFragmentManager, TAG_ADD_USER)
                 }

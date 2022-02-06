@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import me.lazy_assedninja.demo.library.testing.SingleFragmentActivity
-import me.lazy_assedninja.demo.library.testing.TestFragment
+import me.lazy_assedninja.demo.testing.SingleFragmentActivity
+import me.lazy_assedninja.demo.testing.TestFragment
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.Assert
@@ -40,6 +40,7 @@ class AutoClearedValueTest {
             it.replaceFragment(TestFragment())
         }
         InstrumentationRegistry.getInstrumentation().waitForIdleSync()
+
         try {
             testFragment.testValue
             Assert.fail("should throw if accessed when not set")
@@ -54,6 +55,7 @@ class AutoClearedValueTest {
             it.replaceFragment(TestFragment(), true)
         }
         InstrumentationRegistry.getInstrumentation().waitForIdleSync()
+
         try {
             testFragment.testValue
             Assert.fail("should throw if accessed when not set")

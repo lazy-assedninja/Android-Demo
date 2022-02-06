@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="demoName"
+            name="demo"
             type="String" />
 
         <variable
@@ -18,14 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-        android:onClick="@{() -> viewModel.openDemo(demoName)}">
+        android:onClick="@{() -> viewModel.openDemo(demo)}">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_demo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="12dp"
-            android:text="@{demoName}"
+            android:text="@{demo}"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

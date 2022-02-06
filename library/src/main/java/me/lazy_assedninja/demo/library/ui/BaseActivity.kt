@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 @Suppress("unused")
 abstract class BaseActivity : AppCompatActivity() {
 
-    protected fun dismissKeyboard(windowToken: IBinder) {
+    protected fun dismissKeyboard(windowToken: IBinder?) {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(windowToken, 0)
     }

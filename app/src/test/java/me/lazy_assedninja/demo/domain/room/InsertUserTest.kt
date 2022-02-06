@@ -25,6 +25,7 @@ class InsertUserTest {
     val mainCoroutineRule = MainCoroutineRule()
 
     private val roomRepository = mock<RoomRepository>()
+
     private lateinit var insertUser: InsertUser
 
     @Before
