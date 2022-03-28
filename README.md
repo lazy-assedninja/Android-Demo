@@ -1,6 +1,7 @@
 # Android-Demo
 Example of Android packages & frameworks.
 
+
 ## Environment
 * MacOS 11.4
 * Android Studio Arctic Fox | 2020.3.1 Patch 2
@@ -9,21 +10,35 @@ Example of Android packages & frameworks.
 * JDK 11.0.13
 
 
-## Featuring
+## Language
+* Kotlin
+
+
+## Architecture
 * MVVM
 * Clean Architecture
+
+
+## Featuring
+* Multi Module
+* Navigation 
 * Composite Build
+* CI
+* Instrumented Test
+* Unit Test
+  
+
+## Plugins
+* Kotlin Parcelize
+* Kotlin AllOpen
+* Navigation SafeArgs
 * Gradle Build
 * Lint
-* Multi Module
-* CI
-* Unit Test
-* Instrumented Test
-* Kotlin allOpen
-* Navigation
-* Navigation safeArgs
+
+
+## Tools
 * Dagger
-* Life Cycle
+* Lifecycle
 * Storage Access Framework
 * DocumentsProvider
 * Room
