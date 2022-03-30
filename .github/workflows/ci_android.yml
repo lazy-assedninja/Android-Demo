@@ -35,7 +35,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
-    # Identifies "gradle_vaildation" jobs that must complete successfully before this job will run.
+    # Identifies "gradle_validation" jobs that must complete successfully before this job will run.
     needs: gradle_vaildation
     
     steps:
@@ -68,7 +68,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
-    # Identifies "gradle_vaildation" jobs that must complete successfully before this job will run.
+    # Identifies "gradle_validation" jobs that must complete successfully before this job will run.
     needs: gradle_vaildation
     
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -105,13 +105,15 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: app-debug-androidTest
-          
-      - name: Login To Google Cloud
-        uses: google-github-actions/setup-gcloud@master
+
+      - name: Set up Auth
+        uses: google-github-actions/auth@v0
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
+          workload_identity_provider: ${{ secrets.GCP_WIP }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT}}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
         
       - name: Run Instrumented Unit Tests In Firebase Test Lab
         run: gcloud firebase test android run --type instrumentation --app app-debug.apk --test app-debug-androidTest.apk --device model=Pixel2,version=30
