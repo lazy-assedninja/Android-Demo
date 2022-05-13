@@ -6,9 +6,11 @@ object AndroidX {
     const val CORE = "androidx.core:core-ktx:${DependenciesVersions.ANDROIDX_CORE}"
     const val APP_COMPAT = "androidx.appcompat:appcompat:${DependenciesVersions.ANDROIDX_APP_COMPAT}"
     const val LIFECYCLE_LIVEDATA =
-        "androidx.lifecycle:lifecycle-livedata-ktx:${DependenciesVersions.LIFECYCLE}"
+        "androidx.lifecycle:lifecycle-livedata-ktx:${DependenciesVersions.LIFECYCLE}" // KTX extensions of LiveData
     const val LIFECYCLE_VIEWMODEL =
-        "androidx.lifecycle:lifecycle-viewmodel-ktx:${DependenciesVersions.LIFECYCLE}"
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${DependenciesVersions.LIFECYCLE}" // KTX extensions of ViewModelScope
+    const val LIFECYCLE_RUNTIME =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${DependenciesVersions.LIFECYCLE}" // KTX extensions of LifecycleScope
     const val LIFECYCLE_COMPILER =
         "androidx.lifecycle:lifecycle-compiler:${DependenciesVersions.LIFECYCLE}"
     const val LIFECYCLE_EXTENSIONS =

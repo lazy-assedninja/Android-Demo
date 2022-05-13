@@ -4,86 +4,84 @@ name: CI Android
 on:
 
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
-    
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  gradle_vaildation:
+  gradle_validation:
     name: Validate Gradle Wrapper
-    
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     steps:
-    
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
-      
+
   apk:
     name: Generate APK
-    
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     # Identifies "gradle_validation" jobs that must complete successfully before this job will run.
-    needs: gradle_vaildation
-    
+    needs: gradle_validation
+
     steps:
-    
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Assemble Debug APK
         run: ./gradlew assembleDebug --full-stacktrace
-        
+
       - name: Upload Debug APK
         uses: actions/upload-artifact@v2
         with:
           name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
-        
+
       - name: Assemble Android Test APK
         run: ./gradlew assembleDebugAndroidTest --full-stacktrace
-        
+
       - name: Upload Android Test APK
         uses: actions/upload-artifact@v2
         with:
           name: app-debug-androidTest
           path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
-        
+
   unit_tests:
     name: Unit Tests
-    
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     # Identifies "gradle_validation" jobs that must complete successfully before this job will run.
-    needs: gradle_vaildation
-    
+    needs: gradle_validation
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Run Unit Tests
         run: ./gradlew test --full-stacktrace
-        
+
   Instrumented_unit_tests:
     name: Instrumented Unit Tests With Firebase Test Lab
-    
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -91,21 +89,21 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
-    
+
     # Identifies "apk" jobs that must complete successfully before this job will run.
     needs: apk
-    
+
     steps:
-    
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Download APK
         uses: actions/download-artifact@v2
         with:
           name: app-debug
-          
+
       - name: Download Android Test APK
         uses: actions/download-artifact@v2
         with:
@@ -119,6 +117,6 @@ jobs:
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
-        
+
       - name: Run Instrumented Unit Tests In Firebase Test Lab
         run: gcloud firebase test android run --type instrumentation --app app-debug.apk --test app-debug-androidTest.apk --device model=Pixel2,version=30

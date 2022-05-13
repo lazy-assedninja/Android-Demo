@@ -2,6 +2,8 @@ import me.lazy_assedninja.plugins.*
 
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
@@ -112,12 +114,18 @@ dependencies {
     // Lifecycle
     implementation AndroidX.LIFECYCLE_LIVEDATA
     implementation AndroidX.LIFECYCLE_VIEWMODEL
+    implementation AndroidX.LIFECYCLE_RUNTIME
     kapt AndroidX.LIFECYCLE_COMPILER
     implementation AndroidX.LIFECYCLE_EXTENSIONS
 
     // Navigation
     implementation AndroidX.NAVIGATION_FRAGMENT_KTX
     implementation AndroidX.NAVIGATION_UI_KTX
+
+    // Firebase
+    implementation platform(Google.FIREBASE)
+    implementation Google.FIREBASE_CRASHLYTICS
+    implementation Google.FIREBASE_ANALYTICS
 
     // Dagger
     implementation Google.DAGGER

@@ -23,6 +23,7 @@ class RoomViewModel @Inject constructor(
             _snackBarText.value = Event(message)
         }
         _isLoading.value = false
+
         it.data!!
     }
 

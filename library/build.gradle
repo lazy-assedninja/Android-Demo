@@ -59,6 +59,9 @@ dependencies {
     implementation AndroidX.APP_COMPAT
     implementation Google.MATERIAL
 
+    // Timber
+    implementation ThirdParty.TIMBER
+
     // Recyclerview
     implementation AndroidX.RECYCLERVIEW
 

@@ -19,7 +19,7 @@ Example of Android packages & frameworks.
 * Clean Architecture
 
 
-## Featuring
+## Features
 * Multi Module
 * Navigation 
 * Composite Build
