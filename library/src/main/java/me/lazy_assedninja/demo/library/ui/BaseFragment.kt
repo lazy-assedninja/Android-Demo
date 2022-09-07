@@ -8,11 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.whenCreated
-import androidx.lifecycle.whenResumed
-import androidx.lifecycle.whenStarted
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 private const val TAG_LIFECYCLE_CALLBACKS = "FragmentLifecycle"
@@ -96,30 +91,6 @@ abstract class BaseFragment : Fragment() {
      * Util
      */
     private fun printLifecycleCallbacks(callbacks: String) = Timber.tag(TAG_LIFECYCLE_CALLBACKS).i("${this.javaClass.simpleName} - $callbacks")
-
-    private fun setLifecycleScope(
-        beforeCreated: () -> Unit = {},
-        created: () -> Unit = {},
-        started: () -> Unit = {},
-        resumed: () -> Unit = {},
-        afterResumed: () -> Unit = {}
-    ) = lifecycleScope.launch {
-        beforeCreated()
-
-        whenCreated {
-            created()
-        }
-
-        whenStarted {
-            started()
-        }
-
-        whenResumed {
-            resumed()
-        }
-
-        afterResumed()
-    }
 
     protected fun dismissKeyboard(windowToken: IBinder?) {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager

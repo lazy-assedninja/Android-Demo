@@ -6,11 +6,6 @@ import android.os.IBinder
 import android.os.PersistableBundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.whenCreated
-import androidx.lifecycle.whenResumed
-import androidx.lifecycle.whenStarted
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 private const val TAG_LIFECYCLE_CALLBACKS = "ActivityLifecycle"
@@ -71,30 +66,6 @@ abstract class BaseActivity : AppCompatActivity() {
      * Util
      */
     private fun printLifecycleCallbacks(callbacks: String) = Timber.tag(TAG_LIFECYCLE_CALLBACKS).i("${this.javaClass.simpleName} - $callbacks")
-
-    private fun setLifecycleScope(
-        beforeCreated: () -> Unit = {},
-        created: () -> Unit = {},
-        started: () -> Unit = {},
-        resumed: () -> Unit = {},
-        afterResumed: () -> Unit = {}
-    ) = lifecycleScope.launch {
-        beforeCreated()
-
-        whenCreated {
-            created()
-        }
-
-        whenStarted {
-            started()
-        }
-
-        whenResumed {
-            resumed()
-        }
-
-        afterResumed()
-    }
 
     protected fun dismissKeyboard(windowToken: IBinder?) {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
