@@ -6,8 +6,6 @@
 
     <application
         android:name="me.lazy_assedninja.demo.application.DemoApplication"
-        android:allowBackup="false"
-        android:fullBackupContent="false"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon_round"

@@ -20,11 +20,11 @@ object DependenciesVersions {
     // Google
     const val GOOGLE_MATERIAL = "1.4.0"
     const val FIREBASE = "29.2.1"
-    const val DAGGER = "2.40.5"
+    const val DAGGER = "2.43.2"
     const val GSON = "2.8.9"
 
     // Kotlin
-    const val KOTLIN = "1.6.10"
+    const val KOTLIN = "1.7.10"
     const val TEST_COROUTINES = "1.6.0"
 
     // Third Party
