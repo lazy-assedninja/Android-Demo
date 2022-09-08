@@ -9,6 +9,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-allopen'
     id 'androidx.navigation.safeargs'
+    id 'org.jetbrains.dokka'
 }
 
 allOpen {
