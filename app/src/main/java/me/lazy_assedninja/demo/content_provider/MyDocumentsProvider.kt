@@ -14,6 +14,7 @@ import android.provider.DocumentsProvider
 import android.util.Log
 import android.webkit.MimeTypeMap
 import me.lazy_assedninja.demo.R
+import timber.log.Timber
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -141,7 +142,7 @@ class MyDocumentsProvider : DocumentsProvider() {
 
         // If user is not logged in, return an empty root cursor.  This removes our
         // provider from the list entirely.
-        Log.v(DOCUMENT_PROVIDER, "isDocumentsProviderOpened: ${isDocumentsProviderOpened()}")
+        Timber.v(DOCUMENT_PROVIDER, "isDocumentsProviderOpened: ${isDocumentsProviderOpened()}")
         if (!isDocumentsProviderOpened()) {
             return result
         }
@@ -364,7 +365,7 @@ class MyDocumentsProvider : DocumentsProvider() {
                 ParcelFileDescriptor.open(file, accessMode, handler) {
 
                     // Update the file with the cloud server. The client is done writing.
-                    Log.i(
+                    Timber.i(
                         DOCUMENT_PROVIDER,
                         "A file with id $documentId has been closed! Time to update the server."
                     )
@@ -402,7 +403,7 @@ class MyDocumentsProvider : DocumentsProvider() {
     override fun deleteDocument(documentId: String) {
         val file: File = getFileForDocumentID(documentId)
         if (file.delete()) {
-            Log.i(
+            Timber.i(
                 DOCUMENT_PROVIDER,
                 "Deleted file with id $documentId"
             )

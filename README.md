@@ -56,4 +56,4 @@ Example of Android packages & frameworks.
 
 ## Reports
 * [Build Scan](https://scans.gradle.com/s/56hqvvvlvd2ja)
-* [Lint](https://htmlpreview.github.io/?https://github.com/henryhuang1219/Android-Demo/blob/master/app/reports/lint-results-debug.html)
+* [Lint](https://htmlpreview.github.io/?https://github.com/henryhuang1219/Android-Demo/blob/develope/reports/lint/lint-results-debug.html)

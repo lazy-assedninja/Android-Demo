@@ -79,8 +79,8 @@ android {
     lintOptions {
         abortOnError false
         checkAllWarnings true
-        disable 'InvalidPackage', 'MediaCapabilities', 'DuplicateStrings', 'LogConditional', 'ConvertToWebp'
-        htmlOutput file("reports/lint-results-debug.html")
+        disable 'InvalidPackage', 'MediaCapabilities', 'ConvertToWebp'
+        htmlOutput file("../reports/lint/lint-results-debug.html")
     }
 
     testOptions {
