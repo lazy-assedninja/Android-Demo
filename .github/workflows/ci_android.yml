@@ -52,9 +52,7 @@ jobs:
       - name: generate-google-services-json
         env:
           FIREBASE_PROJECT_INFO: ${{ secrets.FIREBASE_PROJECT_INFO }}
-        run: echo "$FIREBASE_PROJECT_INFO" | base64 --decode >> app/google-service.json
-          cd app
-          ls
+        run: echo "$FIREBASE_PROJECT_INFO" | base64 --decode >> app/google-service.json && cd app && ls
 
       - name: assemble-debug-apk
         run: ./gradlew assembleDebug --full-stacktrace
@@ -96,9 +94,7 @@ jobs:
       - name: generate-google-services-json
         env:
           FIREBASE_PROJECT_INFO: ${{ secrets.FIREBASE_PROJECT_INFO }}
-        run: echo "$FIREBASE_PROJECT_INFO" | base64 --decode >> app/google-service.json
-          cd app
-          ls
+        run: echo "$FIREBASE_PROJECT_INFO" | base64 --decode >> app/google-service.json && cd app && ls
 
       - name: run-unit-tests
         run: ./gradlew test --full-stacktrace
