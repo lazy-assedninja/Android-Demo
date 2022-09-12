@@ -97,13 +97,13 @@
 
 
 # To output a full report of all the rules that R8 applies.
--printconfiguration reports/full-r8-config.txt
+-printconfiguration ../reports/proguard/full-r8-config.txt
 
 # Exhaustively list classes and class members matched by the various -keep options
--printseeds reports/seeds.txt
+-printseeds ../reports/proguard/seeds.txt
 
 # List dead code of the input class files.
--printusage reports/dead_code.txt
+-printusage ../reports/proguard/dead_code.txt
 
 # Print the mapping from old names to new names for classes and class members that have been renamed.
--printmapping reports/mapping.txt
+-printmapping ../reports/proguard/mapping.txt
