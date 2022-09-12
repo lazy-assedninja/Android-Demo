@@ -83,6 +83,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
+      - name: generate-google-services-json
+        env:
+          FIREBASE_PROJECT_INFO: ${{ secrets.FIREBASE_PROJECT_INFO }}
+        run: echo "$FIREBASE_PROJECT_INFO" | base64 --decode >> google-service.json
+
       - name: run-unit-tests
         run: ./gradlew test --full-stacktrace
 
