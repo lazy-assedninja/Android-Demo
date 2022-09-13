@@ -2,7 +2,6 @@
     package="me.lazy_assedninja.demo">
 
     <application
-        android:allowBackup="false"
         android:icon="@mipmap/icon">
 
         <activity android:name=".testing.SingleFragmentActivity" />

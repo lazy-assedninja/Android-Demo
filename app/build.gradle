@@ -97,7 +97,7 @@ android {
     }
 
     jacoco {
-        version = "0.8.7"
+        version = "0.8.8"
     }
 }
 
@@ -160,6 +160,7 @@ dependencies {
     testImplementation AndroidX.CORE_TESTING
     testImplementation ThirdParty.JUNIT
     androidTestImplementation AndroidX.CORE_TESTING
+    debugImplementation AndroidX.TEST_JUNIT
     androidTestImplementation AndroidX.TEST_JUNIT
     androidTestImplementation AndroidX.TEST_ESPRESSO
 
