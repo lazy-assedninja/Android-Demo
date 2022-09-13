@@ -1,89 +1,108 @@
-name: CI Android
+name: ci-android
 
 # Controls when the action will run. 
 on:
 
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push & pull request events but only for the master branch.
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-    
-  # Allows you to run this workflow manually from the Actions tab
+
+  # Allows you to run this workflow manually from the Actions tab.
   workflow_dispatch:
-  
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
 jobs:
-  gradle_vaildation:
-    name: Validate Gradle Wrapper
-    
-    # The type of runner that the job will run on
+
+  gradle_validation:
+
+    name: validate-gradle-wrapper
+
+    # The type of runner that the job will run on.
     runs-on: ubuntu-latest
-    
+
     steps:
-    
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout
-        uses: actions/checkout@v2
-        
-      - name: Validate Gradle Wrapper
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+      - name: checkout
+        uses: actions/checkout@v3
+
+      # Validates the checksums of Gradle Wrapper JAR files present in the source tree.
+      - name: validate-gradle-wrapper
         uses: gradle/wrapper-validation-action@v1
-      
-  apk:
-    name: Generate APK
-    
+
+  generate_apk:
+
+    name: generate-apk
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     # Identifies "gradle_validation" jobs that must complete successfully before this job will run.
-    needs: gradle_vaildation
-    
+    needs: gradle_validation
+
     steps:
-    
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout
-        uses: actions/checkout@v2
-        
-      - name: Assemble Debug APK
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: generate-google-services-json
+        env:
+          FIREBASE_PROJECT_INFO: ${{ secrets.FIREBASE_PROJECT_INFO }}
+        run: echo "$FIREBASE_PROJECT_INFO" | base64 --decode >> app/google-services.json
+
+      - name: assemble-debug-apk
         run: ./gradlew assembleDebug --full-stacktrace
-        
-      - name: Upload Debug APK
-        uses: actions/upload-artifact@v2
+
+      # Allowing you to share data between jobs and store data.
+      - name: upload-debug-apk
+        uses: actions/upload-artifact@v3
         with:
           name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
-        
-      - name: Assemble Android Test APK
+
+      - name: assemble-android-test-apk
         run: ./gradlew assembleDebugAndroidTest --full-stacktrace
-        
-      - name: Upload Android Test APK
-        uses: actions/upload-artifact@v2
+
+      # Allowing you to share data between jobs and store data.
+      - name: upload-android-test-apk
+        uses: actions/upload-artifact@v3
         with:
           name: app-debug-androidTest
           path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
-        
+
   unit_tests:
-    name: Unit Tests
-    
+
+    name: unit-tests
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     # Identifies "gradle_validation" jobs that must complete successfully before this job will run.
-    needs: gradle_vaildation
-    
+    needs: gradle_validation
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout
-        uses: actions/checkout@v2
-        
-      - name: Run Unit Tests
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: generate-google-services-json
+        env:
+          FIREBASE_PROJECT_INFO: ${{ secrets.FIREBASE_PROJECT_INFO }}
+        run: echo "$FIREBASE_PROJECT_INFO" | base64 --decode >> app/google-services.json && cd app && ls
+
+      - name: run-unit-tests
         run: ./gradlew test --full-stacktrace
-        
+
   Instrumented_unit_tests:
-    name: Instrumented Unit Tests With Firebase Test Lab
-    
+
+    name: instrumented-unit-tests-with-firebase-test-lab
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -91,34 +110,38 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
-    
-    # Identifies "apk" jobs that must complete successfully before this job will run.
-    needs: apk
-    
+
+    # Identifies "generate_apk" jobs that must complete successfully before this job will run.
+    needs: generate_apk
+
     steps:
-    
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout
-        uses: actions/checkout@v2
-        
-      - name: Download APK
-        uses: actions/download-artifact@v2
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+      - name: checkout
+        uses: actions/checkout@v3
+
+      # This downloads artifacts from your build.
+      - name: download-apk
+        uses: actions/download-artifact@v3
         with:
           name: app-debug
-          
-      - name: Download Android Test APK
-        uses: actions/download-artifact@v2
+
+      # This downloads artifacts from your build.
+      - name: download-android-test-apk
+        uses: actions/download-artifact@v3
         with:
           name: app-debug-androidTest
 
-      - name: Set up Auth
+      # Establishes authentication to Google Cloud.
+      - name: set-up-auth
         uses: google-github-actions/auth@v0
         with:
           workload_identity_provider: ${{ secrets.GCP_WIP }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT}}
 
-      - name: Set up Cloud SDK
+      # Configures the Google Cloud SDK.
+      - name: set-up-cloud-sdk
         uses: google-github-actions/setup-gcloud@v0
-        
-      - name: Run Instrumented Unit Tests In Firebase Test Lab
+
+      - name: run-instrumented-unit-tests-in-firebase-test-lab
         run: gcloud firebase test android run --type instrumentation --app app-debug.apk --test app-debug-androidTest.apk --device model=Pixel2,version=30

@@ -34,7 +34,7 @@
     <string name="error_user_email_can_not_be_empty">User email can\'t be empty.</string>
     <string name="error_user_password_can_not_be_empty">User password can\'t be empty.</string>
 
-    <string name="storage_name">demo</string>
+    <string name="storage_name">storage_demo</string>
 
     <!-- Documents Provider -->
     <string name="title_documents_provider">Documents Provider</string>

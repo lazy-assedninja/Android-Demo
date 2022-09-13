@@ -7,7 +7,7 @@ package me.lazy_assedninja.plugins
 object ConfigVersions {
 
     const val COMPILE_SDK_VERSION = 31
-    const val BUILD_TOOLS_VERSION = "30.0.2"
+    const val BUILD_TOOLS_VERSION = "30.0.3"
     const val MIN_LIBRARY_SDK_VERSION = 18
     const val MIN_APP_SDK_VERSION = 23
     const val TARGET_SDK_VERSION = 31

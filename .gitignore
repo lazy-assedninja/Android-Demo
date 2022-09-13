@@ -9,10 +9,14 @@ build/
 .gradle/
 
 # Local configuration file (sdk path, etc, serect keys)
+google-services.json
 local.properties
 
 # Keystore files
 keystore/
+
+# Generate .apk or .aab
+release/
 
 # Proguard reports
 dead_code.txt

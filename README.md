@@ -6,12 +6,12 @@ Example of Android packages & frameworks.
 * MacOS 11.4
 * Android Studio Arctic Fox | 2020.3.1 Patch 2
 * Android Gradle Plugin 7.0.2
-* Gradle 7.0.2
+* Gradle 7.2
 * JDK 11.0.13
+  
 
-
-## Language
-* Kotlin
+### Language
+* Kotlin 1.6.10
 
 
 ## Architecture
@@ -19,7 +19,7 @@ Example of Android packages & frameworks.
 * Clean Architecture
 
 
-## Featuring
+## Features
 * Multi Module
 * Navigation 
 * Composite Build
@@ -32,6 +32,7 @@ Example of Android packages & frameworks.
 * Kotlin Parcelize
 * Kotlin AllOpen
 * Navigation SafeArgs
+* Crashlytics
 * Gradle Build
 * Lint
 
@@ -55,4 +56,4 @@ Example of Android packages & frameworks.
 
 ## Reports
 * [Build Scan](https://scans.gradle.com/s/56hqvvvlvd2ja)
-* [Lint](https://htmlpreview.github.io/?https://github.com/henryhuang1219/Android-Demo/blob/master/app/reports/lint-results-debug.html)
+* [Lint](https://htmlpreview.github.io/?https://github.com/henryhuang1219/Android-Demo/blob/develope/reports/lint/lint-results-debug.html)

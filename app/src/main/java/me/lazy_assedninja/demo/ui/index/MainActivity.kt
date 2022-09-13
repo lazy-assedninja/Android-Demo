@@ -24,6 +24,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initDagger() {
+
         // Creates an instance of main component by grabbing the factory from the app graph
         mainComponent = (application as DemoApplication).appComponent
             .mainComponent().create()
