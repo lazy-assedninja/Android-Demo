@@ -32,6 +32,15 @@ android {
         testInstrumentationRunner "me.lazy_assedninja.demo.DemoTestRunner"
     }
 
+    signingConfigs {
+        debug {
+            storeFile file('../keystores/debug')
+            storePassword '123456'
+            keyAlias 'debug'
+            keyPassword '123456'
+        }
+    }
+
     buildTypes {
         debug {
             testCoverageEnabled !project.hasProperty('android.injected.invoked.from.ide')
@@ -56,6 +65,8 @@ android {
             // R8 configuration files.
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
                     'proguard-rules.pro'
+
+            signingConfig signingConfigs.debug
         }
     }
 

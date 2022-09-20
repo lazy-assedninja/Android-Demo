@@ -12,9 +12,6 @@ build/
 google-services.json
 local.properties
 
-# Keystore files
-keystore/
-
 # Generate .apk or .aab
 release/
 

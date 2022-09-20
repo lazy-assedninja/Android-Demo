@@ -16,6 +16,8 @@
         android:theme="@style/Theme.Demo"
         tools:targetApi="s">
 
+        <profileable android:shell="true"/>
+
         <activity
             android:name="me.lazy_assedninja.demo.ui.splash.SplashScreenActivity"
             android:exported="true"
