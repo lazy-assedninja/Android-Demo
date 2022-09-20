@@ -20,7 +20,6 @@ allOpen {
 
 android {
     compileSdkVersion ConfigVersions.COMPILE_SDK_VERSION
-    buildToolsVersion ConfigVersions.BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId "me.lazy_assedninja.demo"
